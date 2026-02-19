@@ -1,22 +1,18 @@
-// api/validar.js
 export default function handler(req, res) {
     const { key } = req.query;
     
-    // Lista de chaves autorizadas (vendas que você fez)
+    // Aqui você insere as chaves que gerar para seus clientes
     const chavesAutorizadas = [
-        'PRO-123456', 
-        'USER-ADMIN-99',
-        'CLIENTE-VIP-01'
+        'G10-9928-X1', 
+        'G10-4452-B2', 
+        'PRO-ACC-001'
     ];
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     if (chavesAutorizadas.includes(key)) {
-        res.setHeader('Access-Control-Allow-Origin', '*'); // Permite que a extensão consulte
-        return res.status(200).json({ 
-            authorized: true, 
-            token: "SESSAO_ATIVA_" + Date.now() 
-        });
+        return res.status(200).json({ authorized: true });
     } else {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        return res.status(401).json({ authorized: false, message: "Chave inválida" });
+        return res.status(401).json({ authorized: false });
     }
 }
