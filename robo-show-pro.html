@@ -3,39 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Pro | WebBots Pro</title>
+    <title>Show Pro | WebBot Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #050505; color: #fff; font-family: 'Inter', sans-serif; }
+        body { background-color: #050505; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .font-tech { font-family: 'Orbitron', sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .ps-glass { background: rgba(15, 15, 15, 0.9); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; }
+        
+        /* Scanner line aesthetic */
+        .scan-line {
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            position: fixed; top: 0; left: 0; z-index: 100;
+            opacity: 0.3; animation: moveScan 3s linear infinite;
+        }
+        @keyframes moveScan { 0% { top: -10%; } 100% { top: 110%; } }
     </style>
 </head>
 <body>
+    <div class="scan-line"></div>
+
     <nav class="fixed w-full z-50 glass py-4 px-8 flex justify-between items-center">
         <div class="flex items-center gap-3">
             <img src="logo.png" alt="Logo" class="h-10">
-            <span class="font-tech font-bold text-xl tracking-tighter italic">WEBBOTS <span class="text-cyan-400">PRO</span></span>
+            <span class="font-tech font-bold text-xl tracking-tighter italic uppercase">WEBBOT <span class="text-cyan-400">PRO</span></span>
         </div>
-        <a href="index.html" class="text-gray-400 hover:text-cyan-400 transition font-tech text-xs uppercase tracking-widest">Voltar</a>
+        <a href="index.html" class="text-gray-400 hover:text-cyan-400 transition font-tech text-[10px] uppercase tracking-widest italic">System_Exit</a>
     </nav>
 
     <section class="pt-40 pb-20 px-6 max-w-6xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="glass rounded-[2rem] overflow-hidden aspect-video border border-cyan-500/20 shadow-2xl shadow-cyan-500/10">
-                <iframe class="w-full h-full" src="https://www.youtube.com/embed/SEU_VIDEO_SHOW" frameborder="0" allowfullscreen></iframe>
+            <div class="glass rounded-[2rem] overflow-hidden aspect-video border border-cyan-500/20 shadow-2xl shadow-cyan-500/10 relative group">
+                <iframe class="w-full h-full opacity-90 group-hover:opacity-100 transition" src="https://www.youtube.com/embed/SEU_VIDEO_SHOW" frameborder="0" allowfullscreen></iframe>
+                <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 rounded-sm font-tech text-[8px] tracking-widest text-cyan-400 border border-cyan-500/20 italic">
+                    MARKET_ANALYSIS_ACTIVE...
+                </div>
             </div>
             <div>
-                <h1 class="font-tech text-4xl font-bold text-cyan-400 mb-6 italic uppercase">SHOW PRO</h1>
-                <p class="text-gray-400 mb-8 leading-relaxed">O Show Pro utiliza leitura de agressão de mercado e RSI para identificar exaustão. Ideal para quem busca entradas precisas e rápidas no gráfico.</p>
-                <div class="glass p-6 rounded-2xl mb-8 space-y-3">
-                    <div class="flex justify-between"><span class="text-gray-500 uppercase text-xs font-bold tracking-widest">Banca Sugerida</span><span class="font-tech text-green-400">$ 250.00</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500 uppercase text-xs font-bold tracking-widest">Preço</span><span class="font-tech">R$ 697.00</span></div>
+                <h1 class="font-tech text-5xl font-bold text-cyan-400 mb-6 italic uppercase tracking-tighter">SHOW <span class="text-white">PRO</span></h1>
+                <p class="text-gray-400 mb-8 leading-relaxed italic text-sm">O Show Pro utiliza leitura de agressão de mercado e RSI para identificar exaustão. Engenharia de ponta para quem busca precisão cirúrgica no gráfico.</p>
+                
+                <div class="glass p-6 rounded-2xl mb-8 space-y-4 border-l-4 border-cyan-500">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 uppercase text-[10px] font-bold tracking-widest italic">Banca Sugerida</span>
+                        <span class="font-tech text-green-400 text-lg">$ 250.00</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500 uppercase text-[10px] font-bold tracking-widest italic">Licença Pro</span>
+                        <span class="font-tech text-white text-lg">R$ 697.00</span>
+                    </div>
                 </div>
-                <a href="downloads/show-pro.zip" download class="block text-center bg-cyan-500 hover:bg-cyan-400 text-black py-4 rounded-xl font-bold text-lg uppercase transition">📥 Baixar Agora</a>
+
+                <button onclick="abrirPortalAcesso()" class="w-full bg-cyan-500 hover:bg-white text-black py-5 rounded-xl font-tech font-bold text-xl uppercase transition-all transform hover:scale-[1.02] italic shadow-xl shadow-cyan-500/20">
+                    📥 Ativar e Baixar
+                </button>
             </div>
         </div>
     </section>
+
+    <div id="modal-validacao" class="hidden fixed inset-0 bg-black/98 z-[120] flex items-center justify-center p-6 backdrop-blur-3xl">
+        <div class="ps-glass p-12 w-full max-w-md text-center border-cyan-500/30">
+            <h2 class="font-tech text-3xl text-white mb-10 italic uppercase font-bold tracking-widest">Verify_Key</h2>
+            <input type="text" id="chave-vip" placeholder="COLE SUA KEY VIP" class="w-full bg-black border border-white/10 p-5 rounded text-center font-mono text-cyan-400 mb-8 outline-none focus:border-cyan-500 uppercase text-xl italic">
+            <div id="msg-erro" class="font-tech text-[10px] mb-6 h-4 uppercase tracking-widest text-red-500 font-bold italic"></div>
+            
+            <button onclick="validarEDownload()" id="btn-final" class="w-full bg-cyan-500 text-black py-5 font-tech font-bold text-xl uppercase italic hover:bg-white transition shadow-2xl">Download_Start</button>
+            
+            <button onclick="fecharPortalAcesso()" class="mt-8 text-gray-600 font-tech text-[9px] uppercase tracking-widest italic block mx-auto hover:text-white transition">Cancelar_Operação</button>
+        </div>
+    </div>
+
+    <script>
+        const BOT_ID_SISTEMA = "show-pro"; // Nome exato do arquivo no seu repositório privado (show-pro.zip)
+        const API_URL = "https://api-mocha-seven-92.vercel.app/api/download";
+
+        function abrirPortalAcesso() { document.getElementById('modal-validacao').classList.remove('hidden'); }
+        function fecharPortalAcesso() { document.getElementById('modal-validacao').classList.add('hidden'); }
+
+        async function validarEDownload() {
+            const key = document.getElementById('chave-vip').value.trim();
+            const btn = document.getElementById('btn-final');
+            const msgErro = document.getElementById('msg-erro');
+            
+            if(!key) {
+                msgErro.innerText = "ERRO: CHAVE_VAZIA";
+                return;
+            }
+
+            btn.innerText = "PROCESSANDO...";
+            btn.disabled = true;
+
+            try {
+                // Montamos a URL com os parâmetros necessários
+                const downloadUrl = `${API_URL}?chave=${key}&bot=${BOT_ID_SISTEMA}`;
+                
+                // Redirecionamento direto para a API que cuida do CORS e da proteção
+                window.location.href = downloadUrl;
+
+                setTimeout(() => {
+                    btn.innerText = "Download_Start";
+                    btn.disabled = false;
+                }, 5000);
+
+            } catch(e) { 
+                msgErro.innerText = "ERRO: FALHA_NA_REDE";
+                btn.innerText = "TENTAR NOVAMENTE";
+                btn.disabled = false;
+            }
+        }
+    </script>
 </body>
 </html>
