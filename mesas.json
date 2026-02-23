@@ -1,0 +1,15 @@
+{
+  "MESA": {
+    "HISTORICO_NUMEROS": "[class*='history-item-value__text']",
+    "CARD_MESA_LOBBY": "[class*='table__aspect-ratio-placeholder']",
+    "BOTAO_FECHAR": ".close-button.header__close-button",
+    "DUZIA_1": "path[data-automation-locator='betPlace.dozen-1st12']",
+    "DUZIA_2": "path[data-automation-locator='betPlace.dozen-2nd12']",
+    "DUZIA_3": "path[data-automation-locator='betPlace.dozen-3rd12']"
+  },
+  "MOEDAS": {
+    "LOCATOR_2_5": "chipsPanel.chip250",
+    "LOCATOR_5_0": "chipsPanel.chip500",
+    "CLASSE_SELECIONADA": "arrow-slider__element_selected"
+  }
+}
