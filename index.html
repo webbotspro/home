@@ -79,10 +79,18 @@
 @media (max-width: 768px) {
     .full-access-container {
         width: 98vw !important;
-        margin-left: calc(-49vw + 50%); /* Centraliza o elemento que é maior que o pai */
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-        padding-top: 80px !important; /* Reduzi um pouco o topo no mobile */
+        margin-left: calc(-49vw + 50%);
+        /* Diminuindo a altura total através do padding */
+        padding-top: 40px !important; 
+        padding-bottom: 40px !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Reduz o espaço entre o botão e o texto de chamada inferior */
+    .inner-call {
+        margin-top: 25px !important;
+        padding-top: 20px !important;
     }
 }
     </style>
@@ -226,4 +234,5 @@
     </script>
 </body>
 </html>
+
 
