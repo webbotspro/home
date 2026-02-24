@@ -69,6 +69,23 @@
             max-height: 100%;
             width: auto;
         }
+        @media (max-width: 768px) {
+    /* Faz o conteúdo do modal ocupar 98% da largura no mobile */
+    #modal-estrategia > div {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        margin: 0 auto;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        border-radius: 15px;
+    }
+    
+    /* Ajuste de escala para o título do modal não quebrar */
+    #modal-estrategia h2 {
+        font-size: 1.875rem; /* text-3xl */
+        line-height: 2.25rem;
+    }
+        }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-10 text-white">
@@ -316,4 +333,5 @@
         }
     </script>
 </body>
+
 </html>
