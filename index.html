@@ -75,6 +75,16 @@
         .inner-call { margin-top: 60px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 40px; }
         .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
         .logo-box img { max-height: 100%; width: auto; }
+        /* Ajuste para o container Full Access ocupar 98% da largura no mobile */
+@media (max-width: 768px) {
+    .full-access-container {
+        width: 98vw !important;
+        margin-left: calc(-49vw + 50%); /* Centraliza o elemento que é maior que o pai */
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-top: 80px !important; /* Reduzi um pouco o topo no mobile */
+    }
+}
     </style>
 </head>
 <body class="min-h-screen p-6 md:p-12">
@@ -101,7 +111,9 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-7">
                         <span class="font-modern text-cyan-400 text-[10px] tracking-[0.4em] uppercase mb-2 block italic">Acesso Total à Grade</span>
-                        <h2 class="font-modern text-6xl font-bold italic uppercase tracking-tighter mb-4 text-white">FULL <span class="text-cyan-400">ACCESS</span></h2>
+                         <h2 class="font-modern text-4xl md:text-6xl font-bold italic uppercase tracking-tighter mb-4 text-white whitespace-nowrap">
+    FULL <span class="text-cyan-400">ACCESS</span>
+</h2>
                         <p class="text-gray-400 text-base leading-relaxed max-w-2xl italic">
                             Libere todos os robôs de roleta da plataforma: Dozen Pro (Dúzias) e Show Pro (Multiplicadores). A estratégia completa para buscar lucros consistentes e alavancagem em qualquer mesa.
                         </p>
@@ -214,3 +226,4 @@
     </script>
 </body>
 </html>
+
