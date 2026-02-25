@@ -7,75 +7,205 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
-        
-        body { 
-            background-color: var(--ps-dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
-        }
+:root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; }
 
-        .font-modern { font-family: 'Rajdhani', sans-serif; }
-        .ps-glass { 
-            background: rgba(20, 20, 20, 0.8); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 15px; 
-        }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
 
-        .computer-line {
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
-            position: fixed; top: -10px; left: 0; z-index: 9999;
-            opacity: 0.5; animation: scanMove 5s linear infinite; pointer-events: none;
-        }
-        @keyframes scanMove { 0% { top: -10%; } 100% { top: 110%; } }
+body { 
+    background-color: var(--ps-dark); 
+    color: #fff; 
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
+}
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+.font-modern { font-family: 'Rajdhani', sans-serif; }
 
-        .bot-card { transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-        .card-vip-hover:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); 
-            border-color: var(--ps-blue);
-        }
-        .card-free-hover:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 0 40px rgba(40, 255, 187, 0.4); 
-            border-color: var(--neon-green);
-        }
+.ps-glass { 
+    background: rgba(20, 20, 20, 0.8); 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-radius: 15px; 
+}
 
-        .card-full-static {
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.2);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-        }
+.computer-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
+    position: fixed;
+    top: -10px;
+    left: 0;
+    z-index: 9999;
+    opacity: 0.5;
+    animation: scanMove 5s linear infinite;
+    pointer-events: none;
+}
 
-        .ribbon {
-            position: absolute; top: 15px; right: -35px; width: 120px;
-            transform: rotate(45deg); text-align: center;
-            font-family: 'Rajdhani', sans-serif; font-weight: 900; font-size: 9px;
-            letter-spacing: 1px; padding: 4px 0;
-        }
-        .ribbon-vip { background: var(--ps-blue); color: #000; }
-        .ribbon-free { background: var(--neon-green); color: #000; }
+@keyframes scanMove {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
 
-        .btn-full {
-            background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
-            color: #000; font-weight: 700; transition: 0.4s;
-        }
-        .btn-full:hover { transform: scale(1.02); box-shadow: 0 0 30px var(--ps-blue); letter-spacing: 2px; }
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .price-opt.selected { border-color: var(--ps-blue); background: rgba(0, 212, 255, 0.15); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
-        .full-access-container { padding-top: 130px; padding-bottom: 100px; }
-        .inner-call { margin-top: 60px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 40px; }
-        .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
-        .logo-box img { max-height: 100%; width: auto; }
-        /* Ajuste para o container Full Access ocupar 98% da largura no mobile */
+/* =========================
+   CARDS (AJUSTADOS)
+   ========================= */
+.bot-card {
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+
+    /* Mais presença visual no estado normal */
+    background: linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(12,12,12,0.92) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 8px 28px rgba(0,0,0,0.35);
+}
+
+/* brilho decorativo sutil */
+.bot-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    border-radius: 15px;
+    opacity: 0.35;
+    transition: opacity 0.4s ease;
+}
+
+/* VIP (azul) - estado normal */
+.bot-card-vip {
+    border: 1px solid rgba(0, 212, 255, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 8px 28px rgba(0,0,0,0.35),
+        0 0 18px rgba(0, 212, 255, 0.10),
+        0 0 40px rgba(0, 212, 255, 0.05);
+}
+
+.bot-card-vip::before {
+    background:
+        radial-gradient(circle at 15% 12%, rgba(0, 212, 255, 0.12), transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
+}
+
+/* FREE (verde) - estado normal */
+.bot-card-free {
+    border: 1px solid rgba(40, 255, 187, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 8px 28px rgba(0,0,0,0.35),
+        0 0 18px rgba(40, 255, 187, 0.10),
+        0 0 40px rgba(40, 255, 187, 0.05);
+}
+
+.bot-card-free::before {
+    background:
+        radial-gradient(circle at 15% 12%, rgba(40, 255, 187, 0.14), transparent 45%),
+        radial-gradient(circle at 90% 100%, rgba(0, 212, 255, 0.04), transparent 55%);
+}
+
+.card-vip-hover:hover { 
+    transform: translateY(-10px); 
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 14px 34px rgba(0,0,0,0.35),
+        0 0 28px rgba(0, 212, 255, 0.22),
+        0 0 55px rgba(0, 212, 255, 0.18);
+    border-color: rgba(0, 212, 255, 0.55);
+}
+
+.card-free-hover:hover { 
+    transform: translateY(-10px); 
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 14px 34px rgba(0,0,0,0.35),
+        0 0 28px rgba(40, 255, 187, 0.22),
+        0 0 55px rgba(40, 255, 187, 0.18);
+    border-color: rgba(40, 255, 187, 0.55);
+}
+
+.card-vip-hover:hover::before,
+.card-free-hover:hover::before {
+    opacity: 0.7;
+}
+
+/* Card Full Access */
+.card-full-static {
+    box-shadow:
+        0 0 25px rgba(0, 212, 255, 0.16),
+        0 0 55px rgba(0, 212, 255, 0.06);
+    border: 1px solid rgba(0, 212, 255, 0.28);
+}
+
+.ribbon {
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    width: 120px;
+    transform: rotate(45deg);
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 900;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 4px 0;
+}
+.ribbon-vip { background: var(--ps-blue); color: #000; }
+.ribbon-free { background: var(--neon-green); color: #000; }
+
+.btn-full {
+    background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
+    color: #000;
+    font-weight: 700;
+    transition: 0.4s;
+}
+.btn-full:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px var(--ps-blue);
+    letter-spacing: 2px;
+}
+
+.price-opt.selected {
+    border-color: var(--ps-blue);
+    background: rgba(0, 212, 255, 0.15);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.full-access-container {
+    padding-top: 130px;
+    padding-bottom: 100px;
+}
+
+.inner-call {
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 40px;
+}
+
+.logo-box {
+    height: 65px;
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-box img {
+    max-height: 100%;
+    width: auto;
+}
+
+/* Ajuste para o container Full Access ocupar 98% da largura no mobile */
 @media (max-width: 768px) {
     .full-access-container {
         width: 98vw !important;
@@ -92,7 +222,7 @@
         margin-top: 25px !important;
         padding-top: 20px !important;
     }
-}
+        }
     </style>
 </head>
 <body class="min-h-screen p-6 md:p-12">
@@ -234,6 +364,7 @@
     </script>
 </body>
 </html>
+
 
 
 
