@@ -69,28 +69,70 @@
             max-height: 100%;
             width: auto;
         }
+
+        /* ESTILO DO NOVO MEDIDOR DE AGRESSIVIDADE */
+        .aggression-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .aggression-meter {
+            width: 180px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .aggression-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #22c55e 0%, #eab308 50%, #ef4444 100%);
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+        .aggression-pointer {
+            position: absolute;
+            top: -6px;
+            width: 2px;
+            height: 16px;
+            background: #fff;
+            box-shadow: 0 0 10px #fff;
+            transition: left 0.5s ease-in-out;
+            /* 2.5 de 5 = 50% de posição */
+            left: 50%;
+        }
+        .aggression-pointer::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -3px;
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
         @media (max-width: 768px) {
-    /* Faz o conteúdo do modal ocupar 98% da largura no mobile */
-    #modal-estrategia > div {
-        width: 98vw !important;
-        max-width: 98vw !important;
-        margin: 0 auto;
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-        border-radius: 15px;
-    }
-    
-    /* Ajuste de escala para o título do modal não quebrar */
-    #modal-estrategia h2 {
-        font-size: 1.875rem; /* text-3xl */
-        line-height: 2.25rem;
-    }
-     {
-    /* Garante que o texto empilhado não fique com linhas coladas */
-    #modal-estrategia h2 {
-        line-height: 1.2;
-        font-size: 1.75rem; /* Ajuste fino para o tamanho no mobile */
-    }
+            #modal-estrategia > div {
+                width: 98vw !important;
+                max-width: 98vw !important;
+                margin: 0 auto;
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+                border-radius: 15px;
+            }
+            #modal-estrategia h2 {
+                line-height: 1.2;
+                font-size: 1.75rem;
+            }
+            .aggression-meter { width: 120px; }
         }
     </style>
 </head>
@@ -107,6 +149,19 @@
                 <span class="block font-modern text-[9px] text-gray-500 uppercase tracking-[0.2em] italic -mt-1">Até seu robô vai querer um nosso</span>
             </div>
         </div>
+
+        <div class="aggression-container">
+            <span class="font-modern text-[9px] text-gray-400 uppercase tracking-[0.2em] italic">Agressividade: <span class="text-cyan-400 font-bold">2.5</span></span>
+            <div class="aggression-meter">
+                <div class="aggression-bar"></div>
+                <div class="aggression-pointer"></div>
+            </div>
+            <div class="flex justify-between w-full px-1 text-[7px] text-gray-600 font-bold">
+                <span>CONSERVADOR</span>
+                <span>AGRESSIVO</span>
+            </div>
+        </div>
+
         <a href="/" class="font-modern text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition italic">Sair</a>
     </nav>
 
@@ -189,8 +244,8 @@
         <div class="ps-glass max-w-4xl w-full p-10 border-cyan-500/20 relative overflow-y-auto max-h-[90vh]">
             <button onclick="fecharModalEstrategia()" class="absolute top-6 right-8 text-cyan-400 hover:text-white text-3xl font-modern italic">✕</button>
             <h2 class="font-modern text-3xl md:text-4xl text-white mb-6 md:mb-8 italic uppercase font-bold border-b border-white/5 pb-4 tracking-widest">
-    <span class="block md:inline">Protocolo</span> 
-    <span class="text-cyan-400 block md:inline">Dozen Pro</span>
+                <span class="block md:inline">Protocolo</span> 
+                <span class="text-cyan-400 block md:inline">Dozen Pro</span>
             </h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 font-light text-gray-300 text-sm leading-relaxed italic">
@@ -256,7 +311,7 @@
         let planoSelecionado = "Trimestral";
         let valorSelecionado = "100";
         const NOME_BOT = "Dozen Pro";
-        const BOT_ID_SISTEMA = "dozen-pro"; // ID igual ao arquivo .zip no GitHub
+        const BOT_ID_SISTEMA = "dozen-pro";
         const WHATSAPP_NUM = "55XXXXXXXXXXX"; 
 
         window.addEventListener('load', () => {
@@ -310,20 +365,14 @@
             btn.disabled = true;
 
             try {
-                // Rota da sua API Segura
                 const downloadUrl = `https://api-mocha-seven-92.vercel.app/api/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
-                
-                // Testamos a resposta antes de redirecionar
                 const r = await fetch(downloadUrl, { method: 'HEAD' });
 
                 if(r.ok) {
                     msgErro.innerText = "";
                     btn.innerText = "DOWNLOAD INICIADO!";
-                    btn.style.backgroundColor = "#22c55e"; // Cor de sucesso
-                    
-                    // Inicia o download real
+                    btn.style.backgroundColor = "#22c55e";
                     window.location.href = downloadUrl;
-
                     setTimeout(() => {
                         btn.innerText = "Ativar e Baixar";
                         btn.style.backgroundColor = ""; 
@@ -342,13 +391,4 @@
         }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
