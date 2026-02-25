@@ -11,51 +11,19 @@
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
         
-        body { 
-            background-color: var(--ps-dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
-        }
-
+        body { background-color: var(--ps-dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; background-image: radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%); }
         .font-modern { font-family: 'Rajdhani', sans-serif; }
         .ps-glass { background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; }
 
-        /* LINHA DE SCANNER */
-        .computer-line {
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
-            position: fixed; top: -10px; left: 0; z-index: 9999;
-            opacity: 0.5; animation: scanMove 4s linear infinite; pointer-events: none;
-        }
+        .computer-line { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent); position: fixed; top: -10px; left: 0; z-index: 9999; opacity: 0.5; animation: scanMove 4s linear infinite; pointer-events: none; }
         @keyframes scanMove { 0% { top: -10%; } 100% { top: 110%; } }
 
         .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* BOTÃO SAIR CYAN */
-        .btn-exit {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--brand-cyan);
-            padding: 6px 20px;
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            background: rgba(34, 211, 238, 0.05);
-            border-radius: 4px;
-            transition: all 0.4s ease;
-            font-style: italic;
-            font-weight: 600;
-            text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
-        }
-        .btn-exit:hover {
-            color: #fff; background: var(--brand-cyan); border-color: var(--brand-cyan);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
-        }
+        .btn-exit { font-family: 'Rajdhani', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--brand-cyan); padding: 6px 20px; border: 1px solid rgba(34, 211, 238, 0.3); background: rgba(34, 211, 238, 0.05); border-radius: 4px; transition: all 0.4s ease; font-style: italic; font-weight: 600; text-shadow: 0 0 8px rgba(34, 211, 238, 0.5); }
+        .btn-exit:hover { color: #fff; background: var(--brand-cyan); border-color: var(--brand-cyan); box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
 
-        /* MEDIDOR DE AGRESSIVIDADE 3.5 */
         .aggression-box { display: flex; flex-direction: column; gap: 8px; max-width: 320px; margin-top: 15px; }
         .aggression-track { height: 6px; width: 100%; background: rgba(0, 212, 255, 0.05); position: relative; border-radius: 10px; border: 1px solid rgba(34, 211, 238, 0.2); }
         .aggression-fill { position: absolute; height: 100%; width: 100%; background: linear-gradient(90deg, #22c55e 0%, var(--brand-cyan) 60%, #ef4444 100%); border-radius: 10px; opacity: 0.9; }
@@ -65,28 +33,19 @@
         @keyframes neon-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.6; } 100% { transform: scale(1); opacity: 1; } }
 
         .price-card.selected { border-color: var(--ps-blue); background: rgba(0, 212, 255, 0.1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
-        .btn-cyber {
-            position: relative;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--ps-blue);
-            color: #fff;
-            transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Rajdhani', sans-serif;
-        }
+        .btn-cyber { position: relative; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--ps-blue); color: #fff; transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-family: 'Rajdhani', sans-serif; }
         .btn-cyber:hover { background: var(--ps-blue); color: #000; box-shadow: 0 0 25px var(--ps-blue); transform: scale(1.02); }
 
+        .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
+        .logo-box img { max-height: 100%; width: auto; }
+
         @media (max-width: 768px) {
-            #modal-estrategia > div { width: 98vw !important; max-width: 98vw !important; margin: 0 auto; padding: 1.5rem !important; border-radius: 15px; }
             .aggression-box { max-width: 100%; }
         }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-10 text-white">
     <div class="computer-line"></div>
-
     <nav class="flex justify-between items-center mb-10 relative z-10">
         <div class="flex items-center gap-4">
             <div class="logo-box"><img src="logo.png" alt="Logo"></div>
@@ -97,63 +56,43 @@
         </div>
         <a href="/" class="btn-exit">Sair</a>
     </nav>
-
     <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-7 reveal" id="v-box">
             <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
                 <iframe class="w-full h-full opacity-90 group-hover:opacity-100 transition" src="https://www.youtube.com/embed/SEU_VIDEO_SHOW" frameborder="0" allowfullscreen></iframe>
-                <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 rounded-sm font-modern text-[9px] tracking-widest text-cyan-400 border border-cyan-500/20 italic">
-                    SCANNING_SHOW_TABLES...
-                </div>
+                <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 rounded-sm font-modern text-[9px] tracking-widest text-cyan-400 border border-cyan-500/20 italic uppercase">Scanning_Show_Tables...</div>
             </div>
-            <button onclick="abrirModalEstrategia()" class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group">
-                <span class="text-cyan-400 italic">◈</span> Engenharia Detalhada da Estratégia
-            </button>
+            <button class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group"><span class="text-cyan-400">◈</span> Engenharia Detalhada da Estratégia</button>
         </div>
-
-        <div class="lg:col-span-5 space-y-5 lg:mt-[2.5em]">
-            <div class="reveal" id="t-box">
+        <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]"> <div class="reveal" id="t-box">
                 <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">SHOW <span class="text-cyan-400">PRO</span></h1>
                 <div class="aggression-box">
                     <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
                         <span class="text-white/60">Agressividade Operacional</span>
                         <span class="text-cyan-400 font-bold text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">Nível 3.5</span>
                     </div>
-                    <div class="aggression-track">
-                        <div class="aggression-fill"></div>
-                        <div class="aggression-pointer"></div>
-                    </div>
-                    <div class="flex justify-between text-[8px] text-white/30 font-bold uppercase tracking-widest">
-                        <span>Conservador</span>
-                        <span>Full Risk</span>
-                    </div>
+                    <div class="aggression-track"><div class="aggression-fill"></div><div class="aggression-pointer"></div></div>
                 </div>
             </div>
-
             <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
                 <div class="flex justify-between items-end mb-4">
-                    <div>
-                        <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Segurança</span>
-                        <h4 class="font-modern text-4xl font-bold italic">800 <span class="text-[10px] opacity-30 tracking-widest uppercase italic">Unid. Mínimo</span></h4>
-                    </div>
-                    <div class="text-right"><span class="font-modern text-[9px] text-cyan-400 uppercase tracking-widest italic font-bold">Ideal: 1200 UN</span></div>
+                    <div><span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic font-modern">Segurança</span><h4 class="font-modern text-4xl font-bold italic">800 <span class="text-[10px] opacity-30 uppercase tracking-widest italic">Unid. Mínimo</span></h4></div>
+                    <span class="text-[10px] text-cyan-400 font-bold uppercase italic font-modern">Ideal: 1200 UN</span>
                 </div>
                 <div class="grid grid-cols-4 gap-2 text-center">
                     <div class="space-y-1"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="text-[7px] text-gray-500 uppercase">Ciclo 1</span></div>
                     <div class="space-y-1"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="text-[7px] text-gray-500 uppercase">Ciclo 2</span></div>
-                    <div class="space-y-1"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full opacity-50"></div><span class="text-[7px] text-gray-500 uppercase">Ciclo 3</span></div>
-                    <div class="space-y-1"><div class="h-1.5 bg-white/10 rounded-full"></div><span class="text-[7px] text-cyan-400 uppercase italic">Banca Ideal</span></div>
+                    <div class="space-y-1"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full opacity-40"></div><span class="text-[7px] text-gray-500 uppercase">Ciclo 3</span></div>
+                    <div class="space-y-1"><div class="h-1.5 bg-white/10 rounded-full"></div><span class="text-[7px] text-cyan-400 italic">Banca Ideal</span></div>
                 </div>
             </div>
-
             <div class="reveal grid grid-cols-3 gap-2" id="p-box">
                 <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Mensal', '35')"><span class="text-[9px] text-gray-500 uppercase">Mensal</span><div class="text-lg font-bold">R$ 35</div></div>
                 <div class="ps-glass p-3 text-center cursor-pointer price-card selected border-cyan-500/50" onclick="selectPlan(this, 'Trimestral', '90')"><span class="text-[9px] text-cyan-400 uppercase">Trimestral</span><div class="text-lg font-bold">R$ 90</div></div>
                 <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Anual', '300')"><span class="text-[9px] text-gray-500 uppercase">Anual</span><div class="text-lg font-bold">R$ 300</div></div>
             </div>
-
             <div class="reveal" id="btn-box">
-                <button class="btn-cyber w-full py-4 rounded-md text-xl italic">Adquirir / Renovar <span id="selected-name" class="underline">Trimestral</span></button>
+                <button class="btn-cyber w-full py-4 rounded-md text-xl italic uppercase">Adquirir / Renovar <span id="selected-name" class="underline">Trimestral</span></button>
             </div>
         </div>
     </main>
