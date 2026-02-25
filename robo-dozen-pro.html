@@ -70,54 +70,55 @@
             width: auto;
         }
 
-        /* MEDIDOR DE AGRESSIVIDADE CUSTOMIZADO */
+        /* MEDIDOR DE AGRESSIVIDADE UNIFICADO */
         .aggression-box {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            min-width: 140px;
+            gap: 6px;
+            max-width: 280px; /* Um pouco maior no desktop para elegância */
+            margin-top: 10px;
         }
         .aggression-track {
-            height: 3px;
+            height: 4px;
             width: 100%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             position: relative;
-            border-radius: 2px;
-            overflow: visible;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .aggression-fill {
             position: absolute;
             height: 100%;
             width: 100%;
             background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
-            border-radius: 2px;
-            opacity: 0.6;
+            border-radius: 4px;
+            opacity: 0.7;
         }
         .aggression-pointer {
             position: absolute;
-            top: -4px;
+            top: -6px;
             width: 2px;
-            height: 11px;
+            height: 16px;
             background: #fff;
-            box-shadow: 0 0 8px #fff;
-            left: 50%; /* Representa 2.5 de 5.0 */
-            z-index: 2;
+            box-shadow: 0 0 10px #fff;
+            left: 50%; /* Posição para 2.5 */
+            z-index: 10;
         }
         .aggression-pointer::after {
             content: '';
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: #fff;
             border-radius: 50%;
             top: -2px;
-            left: -2px;
-            box-shadow: 0 0 10px #fff;
+            left: -3px;
+            box-shadow: 0 0 15px #fff;
             animation: pulse-glow 2s infinite;
         }
         @keyframes pulse-glow {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
+            50% { transform: scale(1.8); opacity: 0.4; }
             100% { transform: scale(1); opacity: 1; }
         }
 
@@ -130,17 +131,14 @@
                 padding-right: 1.5rem !important;
                 border-radius: 15px;
             }
-            #modal-estrategia h2 {
-                line-height: 1.2;
-                font-size: 1.75rem;
-            }
+            .aggression-box { max-width: 100%; }
         }
     </style>
 </head>
 <body class="min-h-screen p-4 md:p-10 text-white">
     <div class="computer-line"></div>
 
-    <nav class="flex justify-between items-start mb-10 relative z-10">
+    <nav class="flex justify-between items-center mb-10 relative z-10">
         <div class="flex items-center gap-4">
             <div class="logo-box">
                 <img src="logo.png" alt="Logo">
@@ -150,7 +148,7 @@
                 <span class="block font-modern text-[9px] text-gray-500 uppercase tracking-[0.2em] italic -mt-1">Até seu robô vai querer um nosso</span>
             </div>
         </div>
-        <a href="/" class="font-modern text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition italic pt-2">Sair</a>
+        <a href="/" class="font-modern text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition italic">Sair</a>
     </nav>
 
     <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -169,22 +167,26 @@
         </div>
 
         <div class="lg:col-span-5 space-y-5">
-            <div class="reveal space-y-2" id="t-box">
+            <div class="reveal" id="t-box">
                 <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">DOZEN <span class="text-cyan-400">PRO</span></h1>
                 
-                <div class="aggression-box pb-4">
-                    <div class="flex justify-between items-center text-[8px] font-modern tracking-[0.2em] italic text-gray-500 uppercase">
-                        <span>Agressividade</span>
-                        <span class="text-cyan-400">Nível 2.5</span>
+                <div class="aggression-box">
+                    <div class="flex justify-between items-end text-[9px] font-modern tracking-[0.2em] italic uppercase">
+                        <span class="text-gray-500">Agressividade Operacional</span>
+                        <span class="text-cyan-400 font-bold text-xs">2.5</span>
                     </div>
                     <div class="aggression-track">
                         <div class="aggression-fill"></div>
                         <div class="aggression-pointer"></div>
                     </div>
+                    <div class="flex justify-between text-[7px] text-gray-600 font-bold uppercase tracking-widest">
+                        <span>Safe Mode</span>
+                        <span>Full Risk</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="reveal ps-glass p-6 border-l-4 border-cyan-500" id="b-box">
+            <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
                 <div class="flex justify-between items-end mb-4">
                     <div>
                         <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Configuração de Segurança</span>
@@ -246,7 +248,6 @@
                 <span class="block md:inline">Protocolo</span> 
                 <span class="text-cyan-400 block md:inline">Dozen Pro</span>
             </h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 font-light text-gray-300 text-sm leading-relaxed italic">
                 <div class="space-y-6">
                     <div>
@@ -291,9 +292,7 @@
             <h2 class="font-modern text-4xl text-white mb-10 italic uppercase font-bold tracking-widest">Verify_Key</h2>
             <input type="text" id="chave-vip" placeholder="COLE SUA KEY VIP" class="w-full bg-black border border-white/10 p-5 rounded text-center font-mono text-cyan-400 mb-8 outline-none focus:border-cyan-500 uppercase text-xl italic">
             <div id="msg-erro" class="font-modern text-xs mb-6 h-4 uppercase tracking-widest text-red-500 font-bold italic"></div>
-            
             <button onclick="validarEDownload()" id="btn-final" class="w-full bg-cyan-500 text-black py-5 font-modern font-bold text-2xl uppercase italic hover:bg-white transition shadow-2xl">Ativar e Baixar</button>
-            
             <div class="mt-6 border-t border-white/5 pt-6">
                 <p class="text-gray-500 font-modern text-[10px] uppercase tracking-widest mb-3 italic">Não possui chave ou deseja renovar?</p>
                 <a id="link-comprar-whatsapp-modal" href="#" target="_blank" 
@@ -301,7 +300,6 @@
                     🛒 Adquirir / Renovar Licença
                 </a>
             </div>
-            
             <button onclick="voltarAoPortal()" class="mt-4 text-gray-500 font-modern text-[9px] uppercase tracking-widest italic">Voltar ao Menu</button>
         </div>
     </div>
@@ -357,29 +355,20 @@
             const key = document.getElementById('chave-vip').value.trim();
             const btn = document.getElementById('btn-final');
             const msgErro = document.getElementById('msg-erro');
-            
-            if(!key) {
-                msgErro.innerText = "DIGITE_SUA_CHAVE";
-                return;
-            }
-
+            if(!key) { msgErro.innerText = "DIGITE_SUA_CHAVE"; return; }
             btn.innerText = "VALIDANDO...";
             btn.disabled = true;
-
             try {
                 const downloadUrl = `https://api-mocha-seven-92.vercel.app/api/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
                 const r = await fetch(downloadUrl, { method: 'HEAD' });
-
                 if(r.ok) {
                     msgErro.innerText = "";
                     btn.innerText = "DOWNLOAD INICIADO!";
                     btn.style.backgroundColor = "#22c55e"; 
                     window.location.href = downloadUrl;
-
                     setTimeout(() => {
                         btn.innerText = "Ativar e Baixar";
-                        btn.style.backgroundColor = ""; 
-                        btn.disabled = false;
+                        btn.style.backgroundColor = ""; btn.disabled = false;
                     }, 4000);
                 } else {
                     msgErro.innerText = "CHAVE_INVALIDA_OU_EXPIRADA";
