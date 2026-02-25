@@ -7,221 +7,220 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-:root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; }
+        :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
 
-body { 
-    background-color: var(--ps-dark); 
-    color: #fff; 
-    font-family: 'Inter', sans-serif; 
-    overflow-x: hidden;
-    background-image: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
-}
+        body { 
+            background-color: var(--ps-dark); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
+        }
 
-.font-modern { font-family: 'Rajdhani', sans-serif; }
+        .font-modern { font-family: 'Rajdhani', sans-serif; }
 
-.ps-glass { 
-    background: rgba(20, 20, 20, 0.8); 
-    backdrop-filter: blur(20px); 
-    border: 1px solid rgba(255, 255, 255, 0.08); 
-    border-radius: 15px; 
-}
+        .ps-glass { 
+            background: rgba(20, 20, 20, 0.8); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 15px; 
+        }
 
-.computer-line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
-    position: fixed;
-    top: -10px;
-    left: 0;
-    z-index: 9999;
-    opacity: 0.5;
-    animation: scanMove 5s linear infinite;
-    pointer-events: none;
-}
+        .computer-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
+            position: fixed;
+            top: -10px;
+            left: 0;
+            z-index: 9999;
+            opacity: 0.5;
+            animation: scanMove 5s linear infinite;
+            pointer-events: none;
+        }
 
-@keyframes scanMove {
-    0% { top: -10%; }
-    100% { top: 110%; }
-}
+        @keyframes scanMove {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
-}
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* =========================
-   CARDS (AJUSTADOS)
-   ========================= */
-.bot-card {
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+        /* =========================
+           CARDS (AJUSTADOS)
+           ========================= */
+        .bot-card {
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
 
-    /* Mais presença visual no estado normal */
-    background: linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(12,12,12,0.92) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 8px 28px rgba(0,0,0,0.35);
-}
+            /* Mais presença visual no estado normal */
+            background: linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(12,12,12,0.92) 100%);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.03),
+                0 8px 28px rgba(0,0,0,0.35);
+        }
 
-/* brilho decorativo sutil */
-.bot-card::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    pointer-events: none;
-    border-radius: 15px;
-    opacity: 0.35;
-    transition: opacity 0.4s ease;
-}
+        /* brilho decorativo sutil */
+        .bot-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            pointer-events: none;
+            border-radius: 15px;
+            opacity: 0.35;
+            transition: opacity 0.4s ease;
+        }
 
-/* VIP (azul) - estado normal */
-.bot-card-vip {
-    border: 1px solid rgba(0, 212, 255, 0.18);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 8px 28px rgba(0,0,0,0.35),
-        0 0 18px rgba(0, 212, 255, 0.10),
-        0 0 40px rgba(0, 212, 255, 0.05);
-}
+        /* VIP (azul) - estado normal */
+        .bot-card-vip {
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.03),
+                0 8px 28px rgba(0,0,0,0.35),
+                0 0 18px rgba(0, 212, 255, 0.10),
+                0 0 40px rgba(0, 212, 255, 0.05);
+        }
 
-.bot-card-vip::before {
-    background:
-        radial-gradient(circle at 15% 12%, rgba(0, 212, 255, 0.12), transparent 45%),
-        radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
-}
+        .bot-card-vip::before {
+            background:
+                radial-gradient(circle at 15% 12%, rgba(0, 212, 255, 0.12), transparent 45%),
+                radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
+        }
 
-/* FREE (verde) - estado normal */
-.bot-card-free {
-    border: 1px solid rgba(40, 255, 187, 0.18);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 8px 28px rgba(0,0,0,0.35),
-        0 0 18px rgba(40, 255, 187, 0.10),
-        0 0 40px rgba(40, 255, 187, 0.05);
-}
+        /* FREE (verde) - estado normal */
+        .bot-card-free {
+            border: 1px solid rgba(40, 255, 187, 0.18);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.03),
+                0 8px 28px rgba(0,0,0,0.35),
+                0 0 18px rgba(40, 255, 187, 0.10),
+                0 0 40px rgba(40, 255, 187, 0.05);
+        }
 
-.bot-card-free::before {
-    background:
-        radial-gradient(circle at 15% 12%, rgba(40, 255, 187, 0.14), transparent 45%),
-        radial-gradient(circle at 90% 100%, rgba(0, 212, 255, 0.04), transparent 55%);
-}
+        .bot-card-free::before {
+            background:
+                radial-gradient(circle at 15% 12%, rgba(40, 255, 187, 0.14), transparent 45%),
+                radial-gradient(circle at 90% 100%, rgba(0, 212, 255, 0.04), transparent 55%);
+        }
 
-.card-vip-hover:hover { 
-    transform: translateY(-10px); 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.04),
-        0 14px 34px rgba(0,0,0,0.35),
-        0 0 28px rgba(0, 212, 255, 0.22),
-        0 0 55px rgba(0, 212, 255, 0.18);
-    border-color: rgba(0, 212, 255, 0.55);
-}
+        .card-vip-hover:hover { 
+            transform: translateY(-10px); 
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.04),
+                0 14px 34px rgba(0,0,0,0.35),
+                0 0 28px rgba(0, 212, 255, 0.22),
+                0 0 55px rgba(0, 212, 255, 0.18);
+            border-color: rgba(0, 212, 255, 0.55);
+        }
 
-.card-free-hover:hover { 
-    transform: translateY(-10px); 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.04),
-        0 14px 34px rgba(0,0,0,0.35),
-        0 0 28px rgba(40, 255, 187, 0.22),
-        0 0 55px rgba(40, 255, 187, 0.18);
-    border-color: rgba(40, 255, 187, 0.55);
-}
+        .card-free-hover:hover { 
+            transform: translateY(-10px); 
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.04),
+                0 14px 34px rgba(0,0,0,0.35),
+                0 0 28px rgba(40, 255, 187, 0.22),
+                0 0 55px rgba(40, 255, 187, 0.18);
+            border-color: rgba(40, 255, 187, 0.55);
+        }
 
-.card-vip-hover:hover::before,
-.card-free-hover:hover::before {
-    opacity: 0.7;
-}
+        .card-vip-hover:hover::before,
+        .card-free-hover:hover::before {
+            opacity: 0.7;
+        }
 
-/* Card Full Access */
-.card-full-static {
-    box-shadow:
-        0 0 25px rgba(0, 212, 255, 0.16),
-        0 0 55px rgba(0, 212, 255, 0.06);
-    border: 1px solid rgba(0, 212, 255, 0.28);
-}
+        .card-full-static {
+            box-shadow:
+                0 0 25px rgba(0, 212, 255, 0.16),
+                0 0 55px rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.28);
+        }
 
-.ribbon {
-    position: absolute;
-    top: 15px;
-    right: -35px;
-    width: 120px;
-    transform: rotate(45deg);
-    text-align: center;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 900;
-    font-size: 9px;
-    letter-spacing: 1px;
-    padding: 4px 0;
-}
-.ribbon-vip { background: var(--ps-blue); color: #000; }
-.ribbon-free { background: var(--neon-green); color: #000; }
+        .ribbon {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            width: 120px;
+            transform: rotate(45deg);
+            text-align: center;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 900;
+            font-size: 9px;
+            letter-spacing: 1px;
+            padding: 4px 0;
+        }
+        .ribbon-vip { background: var(--ps-blue); color: #000; }
+        .ribbon-free { background: var(--neon-green); color: #000; }
 
-.btn-full {
-    background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
-    color: #000;
-    font-weight: 700;
-    transition: 0.4s;
-}
-.btn-full:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 30px var(--ps-blue);
-    letter-spacing: 2px;
-}
+        .btn-full {
+            background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
+            color: #000;
+            font-weight: 700;
+            transition: 0.4s;
+        }
+        .btn-full:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--ps-blue);
+            letter-spacing: 2px;
+        }
 
-.price-opt.selected {
-    border-color: var(--ps-blue);
-    background: rgba(0, 212, 255, 0.15);
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
-}
+        .price-opt.selected {
+            border-color: var(--ps-blue);
+            background: rgba(0, 212, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
 
-.full-access-container {
-    padding-top: 130px;
-    padding-bottom: 100px;
-}
+        .full-access-container {
+            padding-top: 130px;
+            padding-bottom: 100px;
+        }
 
-.inner-call {
-    margin-top: 60px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 40px;
-}
+        .inner-call {
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 40px;
+        }
 
-.logo-box {
-    height: 65px;
-    width: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-box img {
-    max-height: 100%;
-    width: auto;
-}
+        .logo-box {
+            height: 65px;
+            width: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-box img {
+            max-height: 100%;
+            width: auto;
+        }
 
-/* Ajuste para o container Full Access ocupar 98% da largura no mobile */
-@media (max-width: 768px) {
-    .full-access-container {
-        width: 98vw !important;
-        margin-left: calc(-49vw + 50%);
-        /* Diminuindo a altura total através do padding */
-        padding-top: 40px !important; 
-        padding-bottom: 40px !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
+        /* Ajuste para o container Full Access ocupar 98% da largura no mobile */
+        @media (max-width: 768px) {
+            .full-access-container {
+                width: 98vw !important;
+                margin-left: calc(-49vw + 50%);
+                /* Diminuindo a altura total através do padding */
+                padding-top: 40px !important; 
+                padding-bottom: 40px !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
 
-    /* Reduz o espaço entre o botão e o texto de chamada inferior */
-    .inner-call {
-        margin-top: 25px !important;
-        padding-top: 20px !important;
-    }
+            /* Reduz o espaço entre o botão e o texto de chamada inferior */
+            .inner-call {
+                margin-top: 25px !important;
+                padding-top: 20px !important;
+            }
         }
     </style>
 </head>
@@ -249,9 +248,9 @@ body {
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div class="lg:col-span-7">
                         <span class="font-modern text-cyan-400 text-[10px] tracking-[0.4em] uppercase mb-2 block italic">Acesso Total à Grade</span>
-                         <h2 class="font-modern text-4xl md:text-6xl font-bold italic uppercase tracking-tighter mb-4 text-white whitespace-nowrap">
-    FULL <span class="text-cyan-400">ACCESS</span>
-</h2>
+                        <h2 class="font-modern text-4xl md:text-6xl font-bold italic uppercase tracking-tighter mb-4 text-white whitespace-nowrap">
+                            FULL <span class="text-cyan-400">ACCESS</span>
+                        </h2>
                         <p class="text-gray-400 text-base leading-relaxed max-w-2xl italic">
                             Libere todos os robôs de roleta da plataforma: Dozen Pro (Dúzias) e Show Pro (Multiplicadores). A estratégia completa para buscar lucros consistentes e alavancagem em qualquer mesa.
                         </p>
@@ -296,27 +295,27 @@ body {
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bot-card ps-glass p-8 group card-vip-hover">
+                <div class="bot-card bot-card-vip ps-glass p-8 group card-vip-hover">
                     <div class="ribbon ribbon-vip uppercase">VIP</div>
                     <div class="h-12 w-12 bg-cyan-500/10 flex items-center justify-center rounded border border-cyan-500/20 mb-8 group-hover:bg-cyan-500 transition shadow-lg">
                         <span class="text-xl group-hover:text-black font-modern font-bold">12</span>
                     </div>
                     <h4 class="font-modern text-3xl font-bold italic uppercase mb-2">DOZEN <span class="text-cyan-400">PRO</span></h4>
                     <p class="text-[10px] text-gray-500 uppercase mb-8 italic">Análise de ausência em dúzias. Ideal para roletas europeias e Playtech.</p>
-                    <a href="robo-dozen-pro"  class="block w-full py-3 bg-white/5 border border-white/10 text-center font-modern text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all italic">Acessar Sistema</a>
+                    <a href="robo-dozen-pro" class="block w-full py-3 bg-white/5 border border-white/10 text-center font-modern text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all italic">Acessar Sistema</a>
                 </div>
 
-                <div class="bot-card ps-glass p-8 group card-vip-hover">
+                <div class="bot-card bot-card-vip ps-glass p-8 group card-vip-hover">
                     <div class="ribbon ribbon-vip uppercase">VIP</div>
                     <div class="h-12 w-12 bg-white/5 flex items-center justify-center rounded border border-white/10 group-hover:bg-cyan-500 transition mb-8 shadow-lg">
                         <span class="text-xl group-hover:text-black italic">🔥</span>
                     </div>
                     <h4 class="font-modern text-3xl font-bold italic uppercase mb-2">SHOW <span class="text-white">PRO</span></h4>
                     <p class="text-[10px] text-gray-500 uppercase mb-8 italic">Focado em multiplicadores e repetição. Especialista em Mega Fire Blaze e Show Roulettes.</p>
-                    <a href="robo-show-pro"  class="block w-full py-3 bg-white/5 border border-white/10 text-center font-modern text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all italic">Acessar Sistema</a>
+                    <a href="robo-show-pro" class="block w-full py-3 bg-white/5 border border-white/10 text-center font-modern text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all italic">Acessar Sistema</a>
                 </div>
 
-                <div class="bot-card ps-glass p-8 group card-free-hover">
+                <div class="bot-card bot-card-free ps-glass p-8 group card-free-hover">
                     <div class="ribbon ribbon-free uppercase">FREE</div>
                     <div class="h-12 w-12 bg-green-500/10 flex items-center justify-center rounded border border-green-500/20 group-hover:bg-green-500 transition mb-8 shadow-lg">
                         <span class="text-xl group-hover:text-black italic">🆓</span>
@@ -338,7 +337,7 @@ body {
             ['header-box', 'full-access-box', 'bots-grid'].forEach((id, i) => {
                 setTimeout(() => {
                     const el = document.getElementById(id);
-                    if(el) el.classList.add('active');
+                    if (el) el.classList.add('active');
                 }, 150 * i);
             });
         });
@@ -347,12 +346,13 @@ body {
             document.querySelectorAll('.price-opt').forEach(el => {
                 el.classList.remove('selected');
                 const span = el.querySelector('span');
-                if(span) span.classList.replace('text-cyan-400', 'text-gray-500');
+                if (span) span.classList.replace('text-cyan-400', 'text-gray-500');
             });
+
             const selected = document.getElementById(id);
             selected.classList.add('selected');
             selected.querySelector('span').classList.replace('text-gray-500', 'text-cyan-400');
-            
+
             planoFull = name;
             valorFull = price;
         }
@@ -364,9 +364,3 @@ body {
     </script>
 </body>
 </html>
-
-
-
-
-
-
