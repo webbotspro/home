@@ -34,7 +34,7 @@
         .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* BOTÃO SAIR CYAN SOLICITADO */
+        /* BOTÃO SAIR CYAN */
         .btn-exit {
             font-family: 'Rajdhani', sans-serif;
             font-size: 11px;
@@ -77,7 +77,7 @@
         .aggression-fill {
             position: absolute;
             height: 100%;
-            width: 100%;
+            width: 70%; /* Nível 3.5 */
             background: linear-gradient(90deg, #22c55e 0%, var(--brand-cyan) 60%, #ef4444 100%);
             border-radius: 10px;
             opacity: 0.9;
@@ -89,8 +89,7 @@
             height: 18px;
             background: #fff;
             box-shadow: 0 0 15px #fff, 0 0 8px var(--brand-cyan);
-            /* POSIÇÃO 70% PARA REPRESENTAR O NÍVEL 3.5 DE 5.0 */
-            left: 70%;
+            left: 70%; /* Nível 3.5 */
             z-index: 10;
             border-radius: 2px;
         }
@@ -111,6 +110,16 @@
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.4); opacity: 0.6; }
             100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ESTRUTURA PARA ALINHAMENTO DESKTOP */
+        @media (min-width: 1024px) {
+            .right-column-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
         }
 
         .price-card.selected { border-color: var(--ps-blue); background: rgba(0, 212, 255, 0.1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
@@ -152,7 +161,7 @@
         <a href="/" class="btn-exit">Sair</a>
     </nav>
 
-    <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         <div class="lg:col-span-7 reveal" id="v-box">
             <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
@@ -161,69 +170,60 @@
                     SCANNING_SHOW_TABLES...
                 </div>
             </div>
-            
             <button onclick="abrirModalEstrategia()" class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group">
                 <span class="text-cyan-400 italic">◈</span> Engenharia Detalhada da Estratégia
             </button>
         </div>
 
-        <div class="lg:col-span-5 space-y-5">
-            <div class="reveal" id="t-box">
-                <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">SHOW <span class="text-cyan-400">PRO</span></h1>
-                
-                <div class="aggression-box">
-                    <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
-                        <span class="text-white/60">Agressividade Operacional</span>
-                        <span class="text-cyan-400 font-bold text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">Nível 3.5</span>
-                    </div>
-                    <div class="aggression-track">
-                        <div class="aggression-fill"></div>
-                        <div class="aggression-pointer"></div>
-                    </div>
-                    <div class="flex justify-between text-[8px] text-white/30 font-bold uppercase tracking-widest">
-                        <span>Conservador</span>
-                        <span>Agressivo</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
-                <div class="flex justify-between items-end mb-4">
-                    <div>
-                        <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Configuração de Segurança</span>
-                        <h4 class="font-modern text-4xl font-bold italic">800 <span class="text-[10px] opacity-30 tracking-widest uppercase italic">Unid. Mínimo</span></h4>
-                    </div>
-                    <div class="text-right">
-                        <span class="font-modern text-[9px] text-cyan-400 uppercase tracking-widest italic font-bold">Ideal: 1200 UN</span>
+        <div class="lg:col-span-5 right-column-container">
+            <div class="space-y-5">
+                <div class="reveal" id="t-box">
+                    <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">SHOW <span class="text-cyan-400">PRO</span></h1>
+                    
+                    <div class="aggression-box">
+                        <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
+                            <span class="text-white/60">Agressividade Operacional</span>
+                            <span class="text-cyan-400 font-bold text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">Nível 3.5</span>
+                        </div>
+                        <div class="aggression-track">
+                            <div class="aggression-fill"></div>
+                            <div class="aggression-pointer"></div>
+                        </div>
+                        <div class="flex justify-between text-[8px] text-white/30 font-bold uppercase tracking-widest">
+                            <span>Conservador</span>
+                            <span>Full Risk</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-4 gap-2">
-                    <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 1</span></div>
-                    <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 2</span></div>
-                    <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full opacity-50"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 3</span></div>
-                    <div class="space-y-1 text-center"><div class="h-1.5 bg-white/10 rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase italic text-cyan-400">Banca Ideal</span></div>
+                <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Configuração de Segurança</span>
+                            <h4 class="font-modern text-4xl font-bold italic">800 <span class="text-[10px] opacity-30 tracking-widest uppercase italic">Unid. Mínimo</span></h4>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-modern text-[9px] text-cyan-400 uppercase tracking-widest italic font-bold">Ideal: 1200 UN</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 1</span></div>
+                        <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 2</span></div>
+                        <div class="space-y-1 text-center"><div class="h-1.5 bg-green-500 shadow-[0_0_8px_#22c55e] rounded-full opacity-50"></div><span class="font-modern text-[7px] text-gray-500 uppercase">Ciclo 3</span></div>
+                        <div class="space-y-1 text-center"><div class="h-1.5 bg-white/10 rounded-full"></div><span class="font-modern text-[7px] text-gray-500 uppercase italic text-cyan-400">Banca Ideal</span></div>
+                    </div>
+                    <p class="text-[8px] text-red-500 mt-4 uppercase italic tracking-widest text-center">Custo por quebra (8 Rodadas): 390 Unidades.</p>
                 </div>
-                <p class="text-[8px] text-red-500 mt-4 uppercase italic tracking-widest text-center">Custo por quebra (8 Rodadas): 390 Unidades.</p>
-            </div>
 
-            <div class="reveal grid grid-cols-3 gap-2" id="p-box">
-                <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Mensal', '67')">
-                    <span class="font-modern text-[9px] text-gray-500 block uppercase italic">Mensal</span>
-                    <div class="font-modern text-lg font-bold">R$ 35</div>
-                </div>
-                <div class="ps-glass p-3 text-center cursor-pointer price-card selected border-cyan-500/50" onclick="selectPlan(this, 'Trimestral', '150')">
-                    <span class="font-modern text-[9px] text-cyan-400 block uppercase italic">Trimestral</span>
-                    <div class="font-modern text-lg font-bold">R$ 90</div>
-                </div>
-                <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Anual', '497')">
-                    <span class="font-modern text-[9px] text-gray-500 block uppercase italic">Anual</span>
-                    <div class="font-modern text-lg font-bold">R$ 300</div>
+                <div class="reveal grid grid-cols-3 gap-2" id="p-box">
+                    <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Mensal', '67')"><span class="font-modern text-[9px] text-gray-500 block uppercase italic">Mensal</span><div class="font-modern text-lg font-bold">R$ 35</div></div>
+                    <div class="ps-glass p-3 text-center cursor-pointer price-card selected border-cyan-500/50" onclick="selectPlan(this, 'Trimestral', '150')"><span class="font-modern text-[9px] text-cyan-400 block uppercase italic">Trimestral</span><div class="font-modern text-lg font-bold">R$ 90</div></div>
+                    <div class="ps-glass p-3 text-center cursor-pointer price-card" onclick="selectPlan(this, 'Anual', '497')"><span class="font-modern text-[9px] text-gray-500 block uppercase italic">Anual</span><div class="font-modern text-lg font-bold">R$ 300</div></div>
                 </div>
             </div>
 
             <div class="reveal" id="btn-box">
-                <button onclick="abrirPortalAcesso()" class="btn-cyber w-full py-4 rounded-md text-xl italic">
+                <button onclick="abrirPortalAcesso()" class="btn-cyber w-full py-4 rounded-md text-xl italic mt-4">
                     Adquirir / Renovar <span id="selected-name" class="underline">Trimestral</span>
                 </button>
             </div>
@@ -240,7 +240,6 @@
                 }, 150 * i);
             });
         });
-
         function selectPlan(el, name, price) {
             document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
@@ -249,4 +248,3 @@
     </script>
 </body>
 </html>
-
