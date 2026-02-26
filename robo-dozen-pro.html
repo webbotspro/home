@@ -251,7 +251,7 @@
             btn.disabled = true;
 
             try {
-                const downloadUrl = `https://api.webbot.pro/api/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
+                const downloadUrl = `https://api.webbot.pro/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
                 const r = await fetch(downloadUrl, { method: 'HEAD' });
                 if(r.ok) {
                     msgErro.innerText = "";
@@ -277,6 +277,7 @@
     </script>
 </body>
 </html>
+
 
 
 
