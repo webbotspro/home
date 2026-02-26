@@ -234,7 +234,7 @@
             if(!key) { msgErro.innerText = "DIGITE_SUA_CHAVE"; return; }
             btn.innerText = "VALIDANDO..."; btn.disabled = true;
             try {
-                const downloadUrl = `https://api-mocha-seven-92.vercel.app/api/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
+                const downloadUrl = `https://api.webbot.pro/api/download?chave=${key}&bot=${BOT_ID_SISTEMA}`;
                 const r = await fetch(downloadUrl, { method: 'HEAD' });
                 if(r.ok) {
                     msgErro.innerText = ""; btn.innerText = "DOWNLOAD INICIADO!"; btn.style.backgroundColor = "#22c55e"; 
@@ -248,4 +248,5 @@
     </script>
 </body>
 </html>
+
 
