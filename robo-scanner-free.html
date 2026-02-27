@@ -1,206 +1,289 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scanner Free | WebBot Pro - Monitoramento de Roletas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; --brand-cyan: rgb(34 211 238); }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
-        
-        body { 
-            background-color: var(--ps-dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scanner Free | WebBot Pro - Monitoramento de Roletas</title>
 
-        .font-modern { font-family: 'Rajdhani', sans-serif; }
-        .ps-glass { background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .computer-line { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent); position: fixed; top: -10px; left: 0; z-index: 9999; opacity: 0.5; animation: scanMove 4s linear infinite; pointer-events: none; }
-        @keyframes scanMove { 0% { top: -10%; } 100% { top: 110%; } }
+  <style>
+    :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; --brand-cyan: rgb(34 211 238); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
 
-        .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+    body {
+      background-color: var(--ps-dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
+    }
 
-        .btn-exit {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--brand-cyan);
-            padding: 6px 20px;
-            border: 1px solid rgba(34, 211, 238, 0.3);
-            background: rgba(34, 211, 238, 0.05);
-            border-radius: 4px;
-            transition: all 0.4s ease;
-            font-style: italic;
-            font-weight: 600;
-            text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
-        }
-        .btn-exit:hover {
-            color: #fff; background: var(--brand-cyan); border-color: var(--brand-cyan);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
-            transform: translateY(-1px);
-        }
+    .font-modern { font-family: 'Rajdhani', sans-serif; }
+    .ps-glass { background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; }
 
-        /* STATUS DE VARREDURA */
-        .scan-box { display: flex; flex-direction: column; gap: 8px; max-width: 320px; margin-top: 15px; }
-        .scan-track { height: 6px; width: 100%; background: rgba(0, 212, 255, 0.1); position: relative; border-radius: 10px; overflow: hidden; }
-        .scan-fill { position: absolute; height: 100%; width: 40%; background: var(--ps-blue); border-radius: 10px; animation: loading 2s infinite ease-in-out; box-shadow: 0 0 10px var(--ps-blue); }
-        
-        @keyframes loading { 0% { left: -40%; } 100% { left: 100%; } }
+    .computer-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--ps-blue), var(--neon-green), transparent);
+      position: fixed;
+      top: -10px;
+      left: 0;
+      z-index: 9999;
+      opacity: 0.5;
+      animation: scanMove 4s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes scanMove { 0% { top: -10%; } 100% { top: 110%; } }
 
-        .btn-cyber {
-            position: relative;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid var(--ps-blue);
-            color: #fff;
-            transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Rajdhani', sans-serif;
-        }
-        .btn-cyber:hover { background: var(--ps-blue); color: #000; box-shadow: 0 0 25px var(--ps-blue); transform: scale(1.02); }
+    .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
-        .logo-box img { max-height: 100%; width: auto; }
+    /* BOTÃO (MESMO DO DOZEN) */
+    .btn-exit {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--brand-cyan);
+      padding: 6px 20px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      background: rgba(34, 211, 238, 0.05);
+      border-radius: 4px;
+      transition: all 0.4s ease;
+      font-style: italic;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+    }
+    .btn-exit:hover {
+      color: #fff;
+      background: var(--brand-cyan);
+      border-color: var(--brand-cyan);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.6);
+      transform: translateY(-1px);
+    }
 
-        .badge-free {
-            background: linear-gradient(90deg, #22c55e, #10b981);
-            color: black;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-    </style>
+    /* STATUS (PADRÃO DO DOZEN: MESMA CAIXA / TRACK) */
+    .status-box { display: flex; flex-direction: column; gap: 8px; max-width: 320px; margin-top: 15px; }
+    .status-track {
+      height: 6px;
+      width: 100%;
+      background: rgba(0, 212, 255, 0.05);
+      position: relative;
+      border-radius: 10px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      overflow: hidden;
+    }
+    .status-fill {
+      position: absolute;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, rgba(34,211,238,0.0) 0%, rgba(34,211,238,0.9) 60%, rgba(34,211,238,0.2) 100%);
+      border-radius: 10px;
+      animation: loading 1.8s infinite ease-in-out;
+      box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+      filter: saturate(1.2);
+    }
+    @keyframes loading { 0% { left: -40%; } 100% { left: 110%; } }
+
+    /* BTN CYBER (MESMO DO DOZEN) */
+    .btn-cyber {
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--ps-blue);
+      color: #fff;
+      transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .btn-cyber:hover { background: var(--ps-blue); color: #000; box-shadow: 0 0 25px var(--ps-blue); transform: scale(1.02); }
+
+    .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
+    .logo-box img { max-height: 100%; width: auto; }
+
+    .badge-free {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, #22c55e, #10b981);
+      color: #000;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-left: 10px;
+      vertical-align: middle;
+      transform: translateY(-4px);
+      box-shadow: 0 0 10px rgba(34,197,94,0.15);
+    }
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: #16a34a;
+      box-shadow: 0 0 10px rgba(34,197,94,0.55);
+    }
+
+    @media (max-width: 768px) {
+      #modal-estrategia > div { width: 98vw !important; max-width: 98vw !important; margin: 0 auto; padding: 1.5rem !important; border-radius: 15px; }
+      .status-box { max-width: 100%; }
+    }
+  </style>
 </head>
+
 <body class="min-h-screen p-4 md:p-10 text-white">
-    <div class="computer-line"></div>
+  <div class="computer-line"></div>
 
-    <nav class="flex justify-between items-center mb-10 relative z-10">
-        <div class="flex items-center gap-4">
-            <div class="logo-box"><img src="logo.png" alt="Logo"></div>
-            <div>
-                <span class="font-modern text-2xl font-bold tracking-tighter italic uppercase">WEBBOT <span class="text-cyan-400">PRO</span></span>
-                <span class="block font-modern text-[9px] text-gray-500 uppercase tracking-[0.2em] italic -mt-1">Inteligência em Varredura de Dados</span>
-            </div>
-        </div>
-        <a href="/" class="btn-exit">Voltar</a>
-    </nav>
+  <!-- NAV (MESMA PROPORÇÃO DO DOZEN) -->
+  <nav class="flex justify-between items-center mb-10 relative z-10">
+    <div class="flex items-center gap-4">
+      <div class="logo-box"><img src="logo.png" alt="Logo"></div>
+      <div>
+        <span class="font-modern text-2xl font-bold tracking-tighter italic uppercase">WEBBOT <span class="text-cyan-400">PRO</span></span>
+        <span class="block font-modern text-[9px] text-gray-500 uppercase tracking-[0.2em] italic -mt-1">Inteligência em Varredura de Dados</span>
+      </div>
+    </div>
+    <a href="/" class="btn-exit">Voltar</a>
+  </nav>
 
-    <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-7 reveal" id="v-box">
-            <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
-                <iframe class="w-full h-full opacity-90 group-hover:opacity-100 transition" src="https://www.dailymotion.com/embed/video/xa0td66" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <button onclick="abrirModalEstrategia()" class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group"><span class="text-cyan-400 italic">◈</span> Documentação Técnica do Scanner</button>
-        </div>
+  <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- LEFT -->
+    <div class="lg:col-span-7 reveal" id="v-box">
+      <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
+        <iframe
+          class="w-full h-full opacity-90 group-hover:opacity-100 transition"
+          src="https://www.dailymotion.com/embed/video/xa0td66?autoplay=0&mute=0"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
 
-        <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]">
-            <div class="reveal" id="t-box">
-                <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">SCANNER <span class="text-cyan-400">FREE</span><span class="badge-free">Gratuito</span></h1>
-                <div class="scan-box">
-                    <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
-                        <span class="text-white/60">Status de Varredura</span>
-                        <span class="text-cyan-400 font-bold text-sm animate-pulse">Monitorando Ativo</span>
-                    </div>
-                    <div class="scan-track"><div class="scan-fill"></div></div>
-                </div>
-            </div>
-
-            <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
-                <div class="flex justify-between items-end mb-4">
-                    <div>
-                        <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Eficiência de Filtro</span>
-                        <h4 class="font-modern text-4xl font-bold italic">PRECISÃO <span class="text-cyan-400">100%</span></h4>
-                    </div>
-                    <div class="text-right">
-                        <span class="font-modern text-[9px] text-gray-500 uppercase tracking-widest italic">Latência Médio</span>
-                        <div class="text-green-400 font-bold font-mono text-sm">24ms</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-2 text-center">
-                    <div class="p-2 bg-white/5 rounded">
-                        <div class="text-[10px] text-cyan-400 font-bold uppercase">Multimesas</div>
-                        <div class="text-[9px] text-gray-400 italic">Simultâneo</div>
-                    </div>
-                    <div class="p-2 bg-white/5 rounded">
-                        <div class="text-[10px] text-cyan-400 font-bold uppercase">Auto-Open</div>
-                        <div class="text-[9px] text-gray-400 italic">Instantâneo</div>
-                    </div>
-                    <div class="p-2 bg-white/5 rounded">
-                        <div class="text-[10px] text-cyan-400 font-bold uppercase">Filtros</div>
-                        <div class="text-[9px] text-gray-400 italic">Customizáveis</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal ps-glass p-4 text-sm italic text-gray-400 leading-relaxed border border-white/5" id="p-box">
-                "O Scanner Free é uma extensão de alta performance que elimina o tempo de procura manual. Configure ausências de 1 a 9 rodadas e deixe o algoritmo trabalhar. Detectou? A mesa abre na sua frente."
-            </div>
-
-            <div class="reveal" id="btn-box">
-                <a href="robo/scanner-free.zip" download class="btn-cyber w-full py-5 rounded-md text-2xl italic uppercase flex items-center justify-center gap-3">
-                    Baixar Scanner Agora 📥
-                </a>
-                <p class="text-center text-[9px] text-gray-500 mt-3 uppercase tracking-widest italic">Versão 1.0.4 - Licença Free Perpétua</p>
-            </div>
-        </div>
-    </main>
-
-    <div id="modal-estrategia" class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-6 backdrop-blur-xl">
-        <div class="ps-glass max-w-4xl w-full p-10 border-cyan-500/20 relative overflow-y-auto max-h-[90vh]">
-            <button onclick="fecharModalEstrategia()" class="absolute top-6 right-8 text-cyan-400 hover:text-white text-3xl font-modern italic">✕</button>
-            <h2 class="font-modern text-4xl text-white mb-8 italic uppercase font-bold border-b border-white/5 pb-4 tracking-widest text-center">Arquitetura do Scanner</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 font-light text-gray-300 text-sm leading-relaxed italic">
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">01. Detecção de Ausência</h4>
-                        <p>O usuário define o gatilho de entrada (**1 a 9 rodadas**). O scanner monitora Dúzias, Colunas, Cores (Red/Black), Paridade (Even/Odd) e Tamanho (High/Low).</p>
-                    </div>
-                    <div>
-                        <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">02. Abertura Automática</h4>
-                        <p>Diferente de alertas de Telegram, este bot **abre a roleta automaticamente** em seu navegador assim que o padrão é atingido, garantindo que você não perca o timing da aposta.</p>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">03. Varredura Multimesas</h4>
-                        <p>O algoritmo lê os dados da lobby em tempo real, processando mais de 50 mesas simultaneamente sem sobrecarregar sua CPU.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">04. Filtros Combinados</h4>
-                        <p>Exemplo: Configure para abrir quando houver ausência de 5 Vermelhos **E** 5 Ímpares. O poder de personalização é total do usuário.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- BTN DOC (MESMO PESO DO DOZEN) -->
+      <button
+        onclick="abrirModalEstrategia()"
+        class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group">
+        <span class="text-cyan-400 italic">◈</span> Documentação Técnica do Scanner
+      </button>
     </div>
 
-    <script>
-        window.addEventListener('load', () => {
-            const sequence = ['v-box', 't-box', 'b-box', 'p-box', 'btn-box'];
-            sequence.forEach((id, i) => { 
-                setTimeout(() => { 
-                    const el = document.getElementById(id); 
-                    if(el) el.classList.add('active'); 
-                }, 150 * i); 
-            });
-        });
+    <!-- RIGHT -->
+    <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]">
+      <!-- TITLE + STATUS (PADRÃO DO DOZEN) -->
+      <div class="reveal" id="t-box">
+        <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">
+          SCANNER <span class="text-cyan-400">FREE</span>
+          <span class="badge-free"><span class="badge-dot"></span> Gratuito</span>
+        </h1>
 
-        function abrirModalEstrategia() { document.getElementById('modal-estrategia').classList.remove('hidden'); }
-        function fecharModalEstrategia() { document.getElementById('modal-estrategia').classList.add('hidden'); }
-    </script>
+        <div class="status-box">
+          <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
+            <span class="text-white/60">Status de Varredura</span>
+            <span class="text-cyan-400 font-bold text-sm drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">Monitorando Ativo</span>
+          </div>
+          <div class="status-track"><div class="status-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- INFO BOX (MESMA CAIXA DO DOZEN) -->
+      <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
+        <div class="flex justify-between items-end mb-4">
+          <div>
+            <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Eficiência de Filtro</span>
+            <h4 class="font-modern text-4xl font-bold italic">PRECISÃO <span class="text-cyan-400">100%</span></h4>
+          </div>
+          <div class="text-right">
+            <span class="font-modern text-[9px] text-gray-500 uppercase tracking-widest italic">Latência Médio</span>
+            <div class="text-green-400 font-bold font-mono text-sm">24ms</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="p-2 bg-white/5 rounded">
+            <div class="text-[10px] text-cyan-400 font-bold uppercase">Multimesas</div>
+            <div class="text-[9px] text-gray-400 italic">Simultâneo</div>
+          </div>
+          <div class="p-2 bg-white/5 rounded">
+            <div class="text-[10px] text-cyan-400 font-bold uppercase">Auto-Open</div>
+            <div class="text-[9px] text-gray-400 italic">Instantâneo</div>
+          </div>
+          <div class="p-2 bg-white/5 rounded">
+            <div class="text-[10px] text-cyan-400 font-bold uppercase">Filtros</div>
+            <div class="text-[9px] text-gray-400 italic">Customizáveis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUOTE (AGORA COM “OCUPAÇÃO” IGUAL AO BLOCO DE PREÇOS) -->
+      <div class="reveal grid grid-cols-1 gap-2" id="p-box">
+        <div class="ps-glass p-4 border border-white/5 text-sm italic text-gray-400 leading-relaxed min-h-[92px] flex items-center">
+          “O Scanner Free é uma extensão de alta performance que elimina o tempo de procura manual.
+          Configure ausências de 1 a 9 rodadas e deixe o algoritmo trabalhar. Detectou? A mesa abre na sua frente.”
+        </div>
+      </div>
+
+      <!-- BTN FINAL (MESMO TAMANHO DO DOZEN: py-4 text-xl) -->
+      <div class="reveal" id="btn-box">
+        <a href="robo/scanner-free.zip" download class="btn-cyber w-full py-4 rounded-md text-xl italic uppercase flex items-center justify-center gap-3">
+          Baixar Scanner Agora 📥
+        </a>
+        <p class="text-center text-[9px] text-gray-500 mt-3 uppercase tracking-widest italic">Versão 1.0.4 - Licença Free Perpétua</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal-estrategia" class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-6 backdrop-blur-xl">
+    <div class="ps-glass max-w-4xl w-full p-10 border-cyan-500/20 relative overflow-y-auto max-h-[90vh]">
+      <button onclick="fecharModalEstrategia()" class="absolute top-6 right-8 text-cyan-400 hover:text-white text-3xl font-modern italic">✕</button>
+
+      <h2 class="font-modern text-4xl text-white mb-8 italic uppercase font-bold border-b border-white/5 pb-4 tracking-widest text-center">
+        Arquitetura do Scanner
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 font-light text-gray-300 text-sm leading-relaxed italic">
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">01. Detecção de Ausência</h4>
+            <p>O usuário define o gatilho de entrada (<b>1 a 9 rodadas</b>). O scanner monitora Dúzias, Colunas, Cores (Red/Black), Paridade (Even/Odd) e Tamanho (High/Low).</p>
+          </div>
+          <div>
+            <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">02. Abertura Automática</h4>
+            <p>Diferente de alertas de Telegram, este bot <b>abre a roleta automaticamente</b> em seu navegador assim que o padrão é atingido, garantindo que você não perca o timing da aposta.</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">03. Varredura Multimesas</h4>
+            <p>O algoritmo lê os dados da lobby em tempo real, processando mais de 50 mesas simultaneamente sem sobrecarregar sua CPU.</p>
+          </div>
+          <div>
+            <h4 class="text-cyan-400 font-modern text-lg uppercase mb-2">04. Filtros Combinados</h4>
+            <p>Exemplo: Configure para abrir quando houver ausência de 5 Vermelhos <b>E</b> 5 Ímpares. O poder de personalização é total do usuário.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const sequence = ['v-box', 't-box', 'b-box', 'p-box', 'btn-box'];
+      sequence.forEach((id, i) => {
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('active');
+        }, 150 * i);
+      });
+    });
+
+    function abrirModalEstrategia() { document.getElementById('modal-estrategia').classList.remove('hidden'); }
+    function fecharModalEstrategia() { document.getElementById('modal-estrategia').classList.add('hidden'); }
+  </script>
 </body>
 </html>
