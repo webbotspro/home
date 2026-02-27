@@ -105,12 +105,13 @@
     .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
     .logo-box img { max-height: 100%; width: auto; }
 
+    /* BADGE (SEM O VERDINHO/QUADRADINHO) */
     .badge-free {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: linear-gradient(90deg, #22c55e, #10b981);
-      color: #000;
+      background: rgba(34, 211, 238, 0.10);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      color: var(--brand-cyan);
       padding: 3px 10px;
       border-radius: 4px;
       font-size: 10px;
@@ -119,14 +120,7 @@
       margin-left: 10px;
       vertical-align: middle;
       transform: translateY(-4px);
-      box-shadow: 0 0 10px rgba(34,197,94,0.15);
-    }
-    .badge-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 3px;
-      background: #16a34a;
-      box-shadow: 0 0 10px rgba(34,197,94,0.55);
+      text-shadow: 0 0 10px rgba(34, 211, 238, 0.35);
     }
 
     @media (max-width: 768px) {
@@ -156,7 +150,7 @@
       <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
         <iframe
           class="w-full h-full opacity-90 group-hover:opacity-100 transition"
-          src="https://www.dailymotion.com/embed/video/xa0td66?autoplay=0&mute=0"
+          src="https://www.dailymotion.com/embed/video/xa0uhg4?autoplay=0&mute=0"
           frameborder="0"
           allowfullscreen>
         </iframe>
@@ -174,7 +168,7 @@
       <div class="reveal" id="t-box">
         <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">
           SCANNER <span class="text-cyan-400">FREE</span>
-          <span class="badge-free"><span class="badge-dot"></span> Gratuito</span>
+          <span class="badge-free">Gratuito</span>
         </h1>
 
         <div class="status-box">
@@ -186,7 +180,7 @@
         </div>
       </div>
 
-      <!-- PRECISÃO (AJUSTADO: MENOS PADDING E MENOS MT) -->
+      <!-- PRECISÃO (AJUSTADO) -->
       <div class="reveal ps-glass p-5 border-l-4 border-cyan-500 mt-5" id="b-box">
         <div class="flex justify-between items-end mb-4">
           <div>
@@ -215,19 +209,19 @@
         </div>
       </div>
 
+      <!-- DESCRIÇÃO -->
       <div class="reveal grid grid-cols-1 gap-2" id="p-box">
         <div class="ps-glass p-4 border border-white/5 text-sm italic text-gray-400 leading-relaxed min-h-[92px] flex items-center">
-          “O Scanner Free é uma extensão de alta performance que elimina o tempo de procura manual.
-          Configure ausências de 1 a 9 rodadas e deixe o algoritmo trabalhar. Detectou? A mesa abre na sua frente.”
+          “O Scanner Free elimina o tempo de procura manual. Configure ausências de 1 a 9 rodadas e deixe o algoritmo trabalhar.”
         </div>
       </div>
 
-      <!-- BOTÃO (ALTURA TRAVADA IGUAL AO DO DOZEN) -->
-      <div class="reveal" id="btn-box">
-        <a href="robo/scanner-free.zip" download class="btn-cyber w-full py-4 rounded-md text-xl italic uppercase text-center leading-none">
+      <!-- BOTÃO (MAIOR E 100% LARGURA IGUAL DO DOZEN) -->
+      <div class="reveal mt-2" id="btn-box">
+        <a href="robo/scanner-free.zip" download
+           class="btn-cyber w-full block py-4 rounded-md text-xl italic uppercase flex items-center justify-center">
           Baixar Scanner Agora 📥
         </a>
-        <p class="text-center text-[9px] text-gray-500 mt-3 uppercase tracking-widest italic">Versão 1.0.4 - Licença Free Perpétua</p>
       </div>
     </div>
   </main>
