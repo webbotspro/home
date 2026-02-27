@@ -129,14 +129,17 @@
   <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
     <!-- LEFT -->
     <div class="lg:col-span-7 reveal" id="v-box">
-      <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
-        <iframe
-          class="w-full h-full opacity-90 group-hover:opacity-100 transition"
-          src="https://iframe.mediadelivery.net/play/608230/57e8b809-626e-474d-98d2-b7e50a0801e1"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
-      </div>
+      <div class="ps-glass overflow-hidden border border-white/10 shadow-2xl relative" style="width: 100%; height: 100%; min-height: 450px;">
+    
+    <iframe 
+        src="https://iframe.mediadelivery.net/embed/608230/57e8b809-626e-474d-98d2-b7e50a0801e1?autoplay=true&loop=false&muted=false&preload=true" 
+        loading="lazy" 
+        style="border: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" 
+        allowfullscreen="true">
+    </iframe>
+
+</div>
 
       <button
         onclick="abrirModalEstrategia()"
@@ -257,4 +260,5 @@
   </script>
 </body>
 </html>
+
 
