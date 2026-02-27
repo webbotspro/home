@@ -88,18 +88,13 @@
 
     <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-7 reveal" id="v-box">
-            <div class="ps-glass overflow-hidden border border-white/10 shadow-2xl relative" style="width: 100%; height: 100%; min-height: 450px;">
-    
-    <iframe 
-        
-        src="https://iframe.mediadelivery.net/embed/608230/74196bda-da5c-468c-96ba-91015b131cdc?autoplay=true&loop=false&muted=false&preload=true" 
-        loading="lazy" 
-        style="border: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" 
-        allowfullscreen="true">
-    </iframe>
-
-</div>
+            <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
+                <iframe class="w-full h-full opacity-90 group-hover:opacity-100 transition" src="player/dozen-pro.html" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button onclick="abrirModalEstrategia()" class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group">
+                <span class="text-cyan-400 italic">◈</span> Engenharia Detalhada da Estratégia
+            </button>
+        </div>
 
         <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]">
             <div class="reveal" id="t-box">
@@ -284,15 +279,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
