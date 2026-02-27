@@ -65,7 +65,7 @@
       transform: translateY(-1px);
     }
 
-    /* STATUS (PADRÃO DO DOZEN: MESMA CAIXA / TRACK) */
+    /* STATUS (PADRÃO DO DOZEN) */
     .status-box { display: flex; flex-direction: column; gap: 8px; max-width: 320px; margin-top: 15px; }
     .status-track {
       height: 6px;
@@ -139,7 +139,6 @@
 <body class="min-h-screen p-4 md:p-10 text-white">
   <div class="computer-line"></div>
 
-  <!-- NAV (MESMA PROPORÇÃO DO DOZEN) -->
   <nav class="flex justify-between items-center mb-10 relative z-10">
     <div class="flex items-center gap-4">
       <div class="logo-box"><img src="logo.png" alt="Logo"></div>
@@ -163,7 +162,6 @@
         </iframe>
       </div>
 
-      <!-- BTN DOC (MESMO PESO DO DOZEN) -->
       <button
         onclick="abrirModalEstrategia()"
         class="mt-4 w-full py-3 ps-glass border border-white/5 hover:border-cyan-500/30 transition font-modern text-xs uppercase tracking-[0.4em] italic flex items-center justify-center gap-2 group">
@@ -173,7 +171,6 @@
 
     <!-- RIGHT -->
     <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]">
-      <!-- TITLE + STATUS (PADRÃO DO DOZEN) -->
       <div class="reveal" id="t-box">
         <h1 class="font-modern text-7xl font-bold italic uppercase leading-none tracking-tighter">
           SCANNER <span class="text-cyan-400">FREE</span>
@@ -189,8 +186,8 @@
         </div>
       </div>
 
-      <!-- INFO BOX (MESMA CAIXA DO DOZEN) -->
-      <div class="reveal ps-glass p-6 border-l-4 border-cyan-500 mt-6" id="b-box">
+      <!-- PRECISÃO (AJUSTADO: MENOS PADDING E MENOS MT) -->
+      <div class="reveal ps-glass p-5 border-l-4 border-cyan-500 mt-5" id="b-box">
         <div class="flex justify-between items-end mb-4">
           <div>
             <span class="font-modern text-[10px] text-gray-500 uppercase tracking-widest italic">Eficiência de Filtro</span>
@@ -218,7 +215,6 @@
         </div>
       </div>
 
-      <!-- QUOTE (AGORA COM “OCUPAÇÃO” IGUAL AO BLOCO DE PREÇOS) -->
       <div class="reveal grid grid-cols-1 gap-2" id="p-box">
         <div class="ps-glass p-4 border border-white/5 text-sm italic text-gray-400 leading-relaxed min-h-[92px] flex items-center">
           “O Scanner Free é uma extensão de alta performance que elimina o tempo de procura manual.
@@ -226,9 +222,9 @@
         </div>
       </div>
 
-      <!-- BTN FINAL (MESMO TAMANHO DO DOZEN: py-4 text-xl) -->
+      <!-- BOTÃO (ALTURA TRAVADA IGUAL AO DO DOZEN) -->
       <div class="reveal" id="btn-box">
-        <a href="robo/scanner-free.zip" download class="btn-cyber w-full py-4 rounded-md text-xl italic uppercase flex items-center justify-center gap-3">
+        <a href="robo/scanner-free.zip" download class="btn-cyber w-full py-4 rounded-md text-xl italic uppercase text-center leading-none">
           Baixar Scanner Agora 📥
         </a>
         <p class="text-center text-[9px] text-gray-500 mt-3 uppercase tracking-widest italic">Versão 1.0.4 - Licença Free Perpétua</p>
@@ -236,7 +232,6 @@
     </div>
   </main>
 
-  <!-- MODAL -->
   <div id="modal-estrategia" class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-6 backdrop-blur-xl">
     <div class="ps-glass max-w-4xl w-full p-10 border-cyan-500/20 relative overflow-y-auto max-h-[90vh]">
       <button onclick="fecharModalEstrategia()" class="absolute top-6 right-8 text-cyan-400 hover:text-white text-3xl font-modern italic">✕</button>
