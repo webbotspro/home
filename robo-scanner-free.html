@@ -41,7 +41,6 @@
     .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* BOTÃO (MESMO DO DOZEN) */
     .btn-exit {
       font-family: 'Rajdhani', sans-serif;
       font-size: 11px;
@@ -65,7 +64,6 @@
       transform: translateY(-1px);
     }
 
-    /* STATUS (PADRÃO DO DOZEN) */
     .status-box { display: flex; flex-direction: column; gap: 8px; max-width: 320px; margin-top: 15px; }
     .status-track {
       height: 6px;
@@ -88,7 +86,6 @@
     }
     @keyframes loading { 0% { left: -40%; } 100% { left: 110%; } }
 
-    /* BTN CYBER (MESMO DO DOZEN) */
     .btn-cyber {
       position: relative;
       background: rgba(255, 255, 255, 0.03);
@@ -127,12 +124,12 @@
   </nav>
 
   <main class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- LEFT -->
     <div class="lg:col-span-7 reveal" id="v-box">
       <div class="ps-glass overflow-hidden aspect-video border border-white/10 shadow-2xl relative group">
         <iframe
+          id="my-video"
           class="w-full h-full opacity-90 group-hover:opacity-100 transition"
-          src="https://www.dailymotion.com/embed/video/xa0uhg4?autoplay=0&mute=0"
+          src="https://www.dailymotion.com/embed/video/xa0uhg4?autoplay=0&mute=0&api=1"
           frameborder="0"
           allowfullscreen>
         </iframe>
@@ -145,12 +142,11 @@
       </button>
     </div>
 
-    <!-- RIGHT -->
     <div class="lg:col-span-5 space-y-5 lg:mt-[-1.00em]">
       <div class="reveal" id="t-box">
         <h1 class="font-modern text-5xl sm:text-6xl md:text-7xl font-bold italic uppercase leading-none tracking-tighter">
         SCANNER <span class="text-green-400">FREE</span>
-</h1>
+        </h1>
 
         <div class="status-box">
           <div class="flex justify-between items-center text-[10px] font-modern tracking-[0.2em] italic uppercase">
@@ -161,7 +157,6 @@
         </div>
       </div>
 
-      <!-- PRECISÃO (AJUSTADO) -->
       <div class="reveal ps-glass p-5 border-l-4 border-cyan-500 mt-5" id="b-box">
         <div class="flex justify-between items-end mb-4">
           <div>
@@ -190,14 +185,12 @@
         </div>
       </div>
 
-      <!-- DESCRIÇÃO -->
       <div class="reveal grid grid-cols-1 gap-2" id="p-box">
         <div class="ps-glass p-4 border border-white/5 text-sm italic text-gray-400 leading-relaxed min-h-[92px] flex items-center">
           “O Scanner Free elimina o tempo de procura manual. Configure ausências de 1 a 9 rodadas e deixe o algoritmo trabalhar.”
         </div>
       </div>
 
-      <!-- BOTÃO (MAIOR E 100% LARGURA IGUAL DO DOZEN) -->
       <div class="reveal mt-2" id="btn-box">
         <a href="robo/scanner-free.zip" download
            class="btn-cyber w-full block py-4 rounded-md text-xl italic uppercase flex items-center justify-center">
@@ -241,7 +234,27 @@
     </div>
   </div>
 
+  <script src="https://api.dmcdn.net/all.js"></script>
+
   <script>
+    // Configuração do Player para evitar redirect
+    var frame = document.getElementById('my-video');
+    var player = DM.player(frame, {
+        video: 'xa0uhg4',
+        params: {
+            autoplay: false,
+            mute: false,
+            "endscreen-enable": false // Tenta desativar nativamente em alguns navegadores
+        }
+    });
+
+    // Evento: Quando o vídeo termina
+    player.addEventListener('video_end', function(e) {
+        player.pause(); // Força a pausa
+        player.seek(0); // Volta para o início para manter sua capa/thumbnail
+    });
+
+    // Sua lógica de animação original
     window.addEventListener('load', () => {
       const sequence = ['v-box', 't-box', 'b-box', 'p-box', 'btn-box'];
       sequence.forEach((id, i) => {
@@ -257,5 +270,3 @@
   </script>
 </body>
 </html>
-
-
