@@ -72,7 +72,6 @@
                 0 8px 28px rgba(0,0,0,0.35);
         }
 
-        /* brilho decorativo sutil */
         .bot-card::before {
             content: "";
             position: absolute;
@@ -83,7 +82,6 @@
             transition: opacity 0.4s ease;
         }
 
-        /* VIP (azul) - estado normal */
         .bot-card-vip {
             border: 1px solid rgba(0, 212, 255, 0.18);
             box-shadow:
@@ -99,7 +97,6 @@
                 radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
         }
 
-        /* FREE (verde) - estado normal */
         .bot-card-free {
             border: 1px solid rgba(40, 255, 187, 0.18);
             box-shadow:
@@ -126,7 +123,7 @@
         }
 
         .card-free-hover:hover { 
-           transform: translateY(-10px); 
+            transform: translateY(-10px); 
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.04),
                 0 14px 34px rgba(0,0,0,0.35),
@@ -192,7 +189,7 @@
             padding-top: 40px;
         }
 
-        /* ===== LOGO: desktop padrão ===== */
+        /* LOGO padrão (desktop) */
         .logo-box {
             height: 65px;
             width: 65px;
@@ -205,12 +202,21 @@
             width: auto;
         }
 
-        /* Ajustes mobile */
+        /* =========================
+           MOBILE TUNING
+           ========================= */
         @media (max-width: 768px) {
-            /* Aumenta a logo no mobile: 65 -> 78 (+13px total) */
+            /* meio termo entre 73 e 78: 76px */
             .logo-box {
-                width: 78px;
-                height: 78px;
+                width: 76px;
+                height: 76px;
+            }
+
+            /* força slogan em 2 linhas */
+            .brand-slogan{
+                max-width: 165px;
+                white-space: normal;
+                line-height: 1.25;
             }
 
             .full-access-container {
@@ -238,12 +244,18 @@
                 <img src="logo.png" alt="Logo">
             </div>
             <div>
-                <h1 class="font-modern text-3xl font-bold italic tracking-tighter uppercase">WEBBOT <span class="text-cyan-400">PRO</span></h1>
-                <p class="font-modern text-[9px] text-gray-500 uppercase tracking-[0.4em] italic -mt-1">Até seu robô vai querer um nosso</p>
+                <h1 class="font-modern text-3xl font-bold italic tracking-tighter uppercase">
+                    WEBBOT <span class="text-cyan-400">PRO</span>
+                </h1>
+
+                <!-- slogan travado em 2 linhas no mobile -->
+                <p class="brand-slogan font-modern text-[9px] text-gray-500 uppercase italic -mt-1 tracking-[0.25em] md:tracking-[0.4em]">
+                    Até seu robô vai querer um nosso
+                </p>
             </div>
         </div>
 
-        <!-- Ajuste: no mobile reduz mais 5px (14px -> 9px). No desktop mantém px-6 -->
+        <!-- padding reduzido no mobile -->
         <a href="https://wa.me/55XXXXXXXXXXX" target="_blank"
            class="border border-cyan-500/30 text-cyan-400 px-[9px] md:px-6 py-2 rounded font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
             Central de Suporte 💬
