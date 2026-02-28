@@ -192,6 +192,7 @@
             padding-top: 40px;
         }
 
+        /* ===== LOGO: desktop padrão ===== */
         .logo-box {
             height: 65px;
             width: 65px;
@@ -204,19 +205,23 @@
             width: auto;
         }
 
-        /* Ajuste para o container Full Access ocupar 98% da largura no mobile */
+        /* Ajustes mobile */
         @media (max-width: 768px) {
+            /* Aumenta a logo em +8px no mobile (65 -> 73) */
+            .logo-box {
+                width: 73px;
+                height: 73px;
+            }
+
             .full-access-container {
                 width: 98vw !important;
                 margin-left: calc(-49vw + 50%);
-                /* Diminuindo a altura total através do padding */
                 padding-top: 40px !important; 
                 padding-bottom: 40px !important;
                 padding-left: 1rem !important;
                 padding-right: 1rem !important;
             }
 
-            /* Reduz o espaço entre o botão e o texto de chamada inferior */
             .inner-call {
                 margin-top: 25px !important;
                 padding-top: 20px !important;
@@ -237,7 +242,10 @@
                 <p class="font-modern text-[9px] text-gray-500 uppercase tracking-[0.4em] italic -mt-1">Até seu robô vai querer um nosso</p>
             </div>
         </div>
-        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="border border-cyan-500/30 text-cyan-400 px-6 py-2 rounded font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
+
+        <!-- Ajuste: no mobile reduz 10px do padding horizontal (24px -> 14px) -->
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank"
+           class="border border-cyan-500/30 text-cyan-400 px-[14px] md:px-6 py-2 rounded font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
             Central de Suporte 💬
         </a>
     </header>
@@ -364,11 +372,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
