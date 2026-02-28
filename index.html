@@ -216,49 +216,61 @@
                 padding-right: 1rem !important;
             }
 
-            /* LOGO no mobile */
             .logo-box{
                 width: 68px;
                 height: 68px;
-                flex: 0 0 68px; /* garante o tamanho */
+                flex: 0 0 68px;
             }
             .logo-box img{
                 max-height: 68px;
             }
 
-            /* Reduz o espaço entre o botão e o texto de chamada inferior */
             .inner-call {
                 margin-top: 25px !important;
                 padding-top: 20px !important;
             }
         }
 
-        /* ==========================================
-           ALTERAÇÕES PEDIDAS (HEADER MOBILE)
-           - diminui "margem" visual da logo (gap)
-           - diminui padding/margem do botão contato
-           - reduz fonte do botão no mobile
-           ========================================== */
+        /* ✅ Header mobile: botão ao lado + título menor */
         @media (max-width: 768px) {
 
-            /* 1) diminui o gap (logo + textos) */
-            #header-box .flex.items-center.gap-4{
-                gap: 10px !important; /* antes era gap-4 (16px) */
-            }
-
-            /* 2) dá um respiro mínimo entre o bloco do título e o botão */
             #header-box{
-                gap: 8px !important;
+                flex-wrap: wrap !important;
+                column-gap: 10px !important;
+                row-gap: 10px !important;
+                align-items: center !important;
             }
 
-            /* 3) reduz “margem” visual do botão (padding lateral) */
-            #header-box > a{
-                padding-left: 12px !important;
-                padding-right: 12px !important;
-                margin-right: 0 !important;
-                white-space: nowrap;
-                font-size: 9px !important; /* 2ª alteração: fonte menor no mobile */
+            #header-box > div{
+                min-width: 0 !important;
+                flex: 1 1 auto !important;
             }
+
+            #header-box .flex.items-center.gap-4{
+                gap: 10px !important;
+            }
+
+            #header-box h1{
+                font-size: 22px !important;
+                line-height: 1 !important;
+            }
+
+            #header-box p{
+                font-size: 8px !important;
+                letter-spacing: 0.28em !important;
+            }
+
+            #header-box > a{
+                flex: 0 0 auto !important;
+                margin-left: auto !important;
+                padding: 8px 12px !important;
+                font-size: 9px !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        @media (max-width: 360px){
+            #header-box h1{ font-size: 20px !important; }
         }
     </style>
 </head>
