@@ -217,13 +217,23 @@
             }
 
             
-        .logo-box {
-            height: 78px;
-            width: 78px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        @media (max-width: 768px) {
+
+  .logo-box{
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px; /* garante o tamanho */
+  }
+
+  .logo-box img{
+    max-height: 96px;
+  }
+
+  /* opcional: aproxima a logo do texto (fica mais “encaixado”) */
+  #header-box .flex.items-center.gap-4{
+    gap: 12px;
+  }
+}
 
             /* Reduz o espaço entre o botão e o texto de chamada inferior */
             .inner-call {
@@ -373,6 +383,7 @@
     </script>
 </body>
 </html>
+
 
 
 
