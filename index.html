@@ -65,12 +65,14 @@
             position: relative;
             overflow: hidden;
 
+            /* Mais presença visual no estado normal */
             background: linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(12,12,12,0.92) 100%);
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.03),
                 0 8px 28px rgba(0,0,0,0.35);
         }
 
+        /* brilho decorativo sutil */
         .bot-card::before {
             content: "";
             position: absolute;
@@ -81,6 +83,7 @@
             transition: opacity 0.4s ease;
         }
 
+        /* VIP (azul) - estado normal */
         .bot-card-vip {
             border: 1px solid rgba(0, 212, 255, 0.18);
             box-shadow:
@@ -96,6 +99,7 @@
                 radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
         }
 
+        /* FREE (verde) - estado normal */
         .bot-card-free {
             border: 1px solid rgba(40, 255, 187, 0.18);
             box-shadow:
@@ -189,68 +193,15 @@
         }
 
         .logo-box {
-            height: 65px;
-            width: 65px;
+            height: 78px;
+            width: 78px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 0 0 auto;
         }
         .logo-box img {
             max-height: 100%;
             width: auto;
-        }
-
-        /* =========================================
-           HEADER (SUPORTE NA MESMA LINHA DO TÍTULO)
-           ========================================= */
-        #header-box .brand-wrap { display:flex; align-items:center; gap:12px; }
-        #header-box .brand-text { min-width: 0; }
-        #header-box .brand-row  { display:flex; align-items:center; gap:10px; }
-        #header-box .brand-title { white-space: nowrap; }
-        #header-box .brand-sub { margin-top: 4px; line-height: 1.2; opacity: .75; }
-
-        @media (max-width: 768px) {
-            /* Header mais compacto e “app” no mobile */
-            #header-box{
-                margin-bottom: 28px !important;
-                align-items: flex-start !important;
-            }
-
-            /* logo maior no mobile */
-            .logo-box{ height: 54px; width: 54px; }
-
-            /* título mais compacto pra caber com o chip */
-            #header-box .brand-title{ font-size: 22px !important; }
-
-            /* chip bem compacto (não compete com o CTA principal) */
-            #header-box .support-chip{
-                padding: 8px 10px !important;
-                font-size: 9px !important;
-                border-radius: 12px !important;
-                letter-spacing: .18em !important;
-                white-space: nowrap;
-            }
-
-            /* slogan na segunda linha, pegando largura */
-            #header-box .brand-sub{
-                font-size: 10px !important;
-                letter-spacing: 0.28em !important;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 380px) {
-            /* em telas muito pequenas: só ícone */
-            #header-box .support-chip{
-                padding: 8px 9px !important;
-                letter-spacing: 0 !important;
-            }
-            #header-box .support-chip{ font-size: 0 !important; }
-            #header-box .support-chip::before{
-                content:"💬";
-                font-size: 12px;
-            }
         }
 
         /* Ajuste para o container Full Access ocupar 98% da largura no mobile */
@@ -258,6 +209,7 @@
             .full-access-container {
                 width: 98vw !important;
                 margin-left: calc(-49vw + 50%);
+                /* Diminuindo a altura total através do padding */
                 padding-top: 40px !important; 
                 padding-bottom: 40px !important;
                 padding-left: 1rem !important;
@@ -276,28 +228,18 @@
     <div class="computer-line"></div>
 
     <header class="max-w-[1200px] mx-auto flex justify-between items-center mb-16 reveal" id="header-box">
-        <div class="brand-wrap">
+        <div class="flex items-center gap-4">
             <div class="logo-box">
                 <img src="logo.png" alt="Logo">
             </div>
-
-            <div class="brand-text">
-                <div class="brand-row">
-                    <h1 class="brand-title font-modern text-3xl font-bold italic tracking-tighter uppercase">
-                        WEBBOT <span class="text-cyan-400">PRO</span>
-                    </h1>
-
-                    <a href="https://wa.me/55XXXXXXXXXXX" target="_blank"
-                       class="support-chip border border-cyan-500/30 text-cyan-300 px-4 py-2 rounded-lg font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
-                        Central de Suporte 💬
-                    </a>
-                </div>
-
-                <p class="brand-sub font-modern text-[9px] text-gray-500 uppercase tracking-[0.4em] italic">
-                    Até seu robô vai querer um nosso
-                </p>
+            <div>
+                <h1 class="font-modern text-3xl font-bold italic tracking-tighter uppercase">WEBBOT <span class="text-cyan-400">PRO</span></h1>
+                <p class="font-modern text-[9px] text-gray-500 uppercase tracking-[0.4em] italic -mt-1">Até seu robô vai querer um nosso</p>
             </div>
         </div>
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="border border-cyan-500/30 text-cyan-400 px-6 py-2 rounded font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
+            Central de Suporte 💬
+        </a>
     </header>
 
     <main class="max-w-[1200px] mx-auto">
@@ -310,7 +252,7 @@
                             FULL <span class="text-cyan-400">ACCESS</span>
                         </h2>
                         <p class="text-gray-400 text-base leading-relaxed max-w-2xl italic">
-                            Desbloqueie todos os robôs da plataforma com uma única chave de acesso incluindo novos robôs que forem lançados e todas as atualizações.
+                            Desbloqueie todos os robôs da plataforma com uma única chave de acesso  incluindo novos robôs que forem lançados e todas as atualizações.
                         </p>
                     </div>
 
