@@ -6,27 +6,28 @@
     <title>WebBot Pro | Hub de Operações</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; }
+        :root { --ps-blue: #00d4ff; --ps-dark: #050505; --neon-green: #28ffbb; --brand-cyan: rgb(34 211 238); }
 
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--ps-blue); border-radius: 10px; }
 
-        body { 
-            background-color: var(--ps-dark); 
-            color: #fff; 
-            font-family: 'Inter', sans-serif; 
+        body {
+            background-color: var(--ps-dark);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 70%);
         }
 
         .font-modern { font-family: 'Rajdhani', sans-serif; }
 
-        .ps-glass { 
-            background: rgba(20, 20, 20, 0.8); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 15px; 
+        .ps-glass {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
         }
 
         .computer-line {
@@ -41,38 +42,24 @@
             animation: scanMove 5s linear infinite;
             pointer-events: none;
         }
-
         @keyframes scanMove {
             0% { top: -10%; }
             100% { top: 110%; }
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* =========================
-           CARDS (AJUSTADOS)
+           CARDS
            ========================= */
         .bot-card {
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-
-            /* Mais presença visual no estado normal */
             background: linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(12,12,12,0.92) 100%);
-            box-shadow:
-                inset 0 1px 0 rgba(255,255,255,0.03),
-                0 8px 28px rgba(0,0,0,0.35);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 8px 28px rgba(0,0,0,0.35);
         }
-
-        /* brilho decorativo sutil */
         .bot-card::before {
             content: "";
             position: absolute;
@@ -83,7 +70,6 @@
             transition: opacity 0.4s ease;
         }
 
-        /* VIP (azul) - estado normal */
         .bot-card-vip {
             border: 1px solid rgba(0, 212, 255, 0.18);
             box-shadow:
@@ -92,14 +78,12 @@
                 0 0 18px rgba(0, 212, 255, 0.10),
                 0 0 40px rgba(0, 212, 255, 0.05);
         }
-
         .bot-card-vip::before {
             background:
                 radial-gradient(circle at 15% 12%, rgba(0, 212, 255, 0.12), transparent 45%),
                 radial-gradient(circle at 90% 100%, rgba(40, 255, 187, 0.05), transparent 50%);
         }
 
-        /* FREE (verde) - estado normal */
         .bot-card-free {
             border: 1px solid rgba(40, 255, 187, 0.18);
             box-shadow:
@@ -108,15 +92,14 @@
                 0 0 18px rgba(40, 255, 187, 0.10),
                 0 0 40px rgba(40, 255, 187, 0.05);
         }
-
         .bot-card-free::before {
             background:
                 radial-gradient(circle at 15% 12%, rgba(40, 255, 187, 0.14), transparent 45%),
                 radial-gradient(circle at 90% 100%, rgba(0, 212, 255, 0.04), transparent 55%);
         }
 
-        .card-vip-hover:hover { 
-            transform: translateY(-10px); 
+        .card-vip-hover:hover {
+            transform: translateY(-10px);
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.04),
                 0 14px 34px rgba(0,0,0,0.35),
@@ -125,8 +108,8 @@
             border-color: rgba(0, 212, 255, 0.55);
         }
 
-        .card-free-hover:hover { 
-           transform: translateY(-10px); 
+        .card-free-hover:hover {
+            transform: translateY(-10px);
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.04),
                 0 14px 34px rgba(0,0,0,0.35),
@@ -136,9 +119,7 @@
         }
 
         .card-vip-hover:hover::before,
-        .card-free-hover:hover::before {
-            opacity: 0.7;
-        }
+        .card-free-hover:hover::before { opacity: 0.7; }
 
         .card-full-static {
             box-shadow:
@@ -166,13 +147,46 @@
         .btn-full {
             background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
             color: #000;
-            font-weight: 700;
-            transition: 0.4s;
+            font-weight: 900;
+            transition: 0.35s;
         }
         .btn-full:hover {
             transform: scale(1.02);
             box-shadow: 0 0 30px var(--ps-blue);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+        }
+
+        /* BOTÃO FULL ACCESS EM 2 LINHAS */
+        .btn-full-2l {
+            background: linear-gradient(90deg, #fff 0%, var(--ps-blue) 100%);
+            color: #000;
+            font-weight: 900;
+            transition: 0.35s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.05;
+            padding: 18px 14px;
+        }
+        .btn-full-2l:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px var(--ps-blue);
+        }
+        .btn-full-2l .l1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 26px;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        .btn-full-2l .l2 {
+            margin-top: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            opacity: .75;
+            letter-spacing: .08em;
+            text-transform: uppercase;
         }
 
         .price-opt.selected {
@@ -181,72 +195,120 @@
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
         }
 
-        .full-access-container {
-            padding-top: 130px;
-            padding-bottom: 100px;
-        }
+        .full-access-container { padding-top: 130px; padding-bottom: 100px; }
+        .inner-call { margin-top: 60px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 40px; }
 
-        .inner-call {
-            margin-top: 60px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 40px;
-        }
+        /* LOGO igual seu outro header */
+        .logo-box { height: 65px; width: 65px; display: flex; align-items: center; justify-content: center; }
+        .logo-box img { max-height: 100%; width: auto; }
 
-        /* ===== LOGO: desktop padrão ===== */
-        .logo-box {
-            height: 65px;
-            width: 65px;
-            display: flex;
+        /* BOTÃO SUPORTE: desktop texto / mobile ícone */
+        .support-btn {
+            border: 1px solid rgba(34, 211, 238, 0.30);
+            background: rgba(34, 211, 238, 0.06);
+            color: var(--brand-cyan);
+            padding: 6px 18px;
+            border-radius: 6px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-style: italic;
+            font-weight: 700;
+            transition: all .35s ease;
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .support-btn:hover {
+            color: #fff;
+            background: var(--brand-cyan);
+            border-color: var(--brand-cyan);
+            box-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+            transform: translateY(-1px);
+        }
+        .support-icon {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             align-items: center;
             justify-content: center;
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            background: rgba(34, 211, 238, 0.08);
+            color: var(--brand-cyan);
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.18);
+            transition: all .35s ease;
+            font-size: 18px;
         }
-        .logo-box img {
-            max-height: 100%;
-            width: auto;
+        .support-icon:hover{
+            background: var(--brand-cyan);
+            color: #000;
+            box-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+            transform: translateY(-1px);
         }
 
-        /* Ajustes mobile */
+        /* Ajustes mobile: mesmas “medidas” do Dozen Pro */
         @media (max-width: 768px) {
-            /* Aumenta a logo em +8px no mobile (65 -> 73) */
-            .logo-box {
-                width: 73px;
-                height: 73px;
-            }
+            body { padding: 16px !important; }
 
+            /* header mais compacto igual Dozen Pro */
+            header#header-box { margin-bottom: 40px !important; }
+
+            /* logo (se quiser manter +8px, pode) */
+            .logo-box { width: 73px; height: 73px; }
+
+            /* container full access ocupando mais a tela */
             .full-access-container {
                 width: 98vw !important;
                 margin-left: calc(-49vw + 50%);
-                padding-top: 40px !important; 
+                padding-top: 40px !important;
                 padding-bottom: 40px !important;
                 padding-left: 1rem !important;
                 padding-right: 1rem !important;
             }
 
-            .inner-call {
-                margin-top: 25px !important;
-                padding-top: 20px !important;
-            }
+            .inner-call { margin-top: 25px !important; padding-top: 20px !important; }
+
+            /* BOTÃO SUPORTE: some texto e entra ícone */
+            .support-btn { display: none; }
+            .support-icon { display: inline-flex; }
+
+            /* botão 2 linhas ajustado no mobile */
+            .btn-full-2l .l1 { font-size: 22px; }
+            .btn-full-2l .l2 { font-size: 11px; }
         }
     </style>
 </head>
+
 <body class="min-h-screen p-6 md:p-12">
     <div class="computer-line"></div>
 
+    <!-- HEADER (AGORA IGUAL O DOZEN PRO EM MEDIDAS) -->
     <header class="max-w-[1200px] mx-auto flex justify-between items-center mb-16 reveal" id="header-box">
         <div class="flex items-center gap-4">
             <div class="logo-box">
                 <img src="logo.png" alt="Logo">
             </div>
             <div>
-                <h1 class="font-modern text-3xl font-bold italic tracking-tighter uppercase">WEBBOT <span class="text-cyan-400">PRO</span></h1>
-                <p class="font-modern text-[9px] text-gray-500 uppercase tracking-[0.4em] italic -mt-1">Até seu robô vai querer um nosso</p>
+                <span class="font-modern text-2xl font-bold tracking-tighter italic uppercase">
+                    WEBBOT <span class="text-cyan-400">PRO</span>
+                </span>
+                <span class="block font-modern text-[9px] text-gray-500 uppercase tracking-[0.2em] italic -mt-1">
+                    Até seu robô vai querer um nosso
+                </span>
             </div>
         </div>
 
-        <!-- Ajuste: no mobile reduz 10px do padding horizontal (24px -> 14px) -->
-        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank"
-           class="border border-cyan-500/30 text-cyan-400 px-[14px] md:px-6 py-2 rounded font-modern text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all italic">
-            Central de Suporte 💬
+        <!-- DESKTOP: texto -->
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="support-btn">
+            Central de Suporte <span style="font-size:14px;">💬</span>
+        </a>
+
+        <!-- MOBILE: ícone -->
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="support-icon" aria-label="Suporte">
+            💬
         </a>
     </header>
 
@@ -260,7 +322,7 @@
                             FULL <span class="text-cyan-400">ACCESS</span>
                         </h2>
                         <p class="text-gray-400 text-base leading-relaxed max-w-2xl italic">
-                            Desbloqueie todos os robôs da plataforma com uma única chave de acesso  incluindo novos robôs que forem lançados e todas as atualizações.
+                            Desbloqueie todos os robôs da plataforma com uma única chave de acesso incluindo novos robôs que forem lançados e todas as atualizações.
                         </p>
                     </div>
 
@@ -279,8 +341,11 @@
                                 <div class="font-modern text-xl font-bold">R$ 500</div>
                             </div>
                         </div>
-                        <button id="btn-comprar-full" onclick="comprarFullAccess()" class="btn-full w-full py-6 rounded font-modern text-2xl uppercase italic">
-                            Assinar Agora ⚡
+
+                        <!-- BOTÃO CENTRAL 2 LINHAS -->
+                        <button id="btn-comprar-full" onclick="comprarFullAccess()" class="btn-full-2l w-full rounded font-modern">
+                            <span class="l1">Assinar Agora ⚡</span>
+                            <span class="l2">Acesso completo à plataforma</span>
                         </button>
                     </div>
                 </div>
@@ -325,7 +390,7 @@
 
                 <div class="bot-card bot-card-free ps-glass p-8 group card-free-hover">
                     <div class="ribbon ribbon-free uppercase">FREE</div>
-                    <div class="h-12 w-12 bg-green-500/10 flex items-center justify-center rounded border border-green-500/20 mb-8  group-hover:bg-green-500 transition shadow-lg">
+                    <div class="h-12 w-12 bg-green-500/10 flex items-center justify-center rounded border border-green-500/20 mb-8 group-hover:bg-green-500 transition shadow-lg">
                         <span class="text-xl group-hover:text-black font-modern font-bold">🆓</span>
                     </div>
                     <h4 class="font-modern text-3xl font-bold italic uppercase mb-2 text-white">SCANNER <span class="text-green-400">FREE</span></h4>
@@ -354,19 +419,28 @@
             document.querySelectorAll('.price-opt').forEach(el => {
                 el.classList.remove('selected');
                 const span = el.querySelector('span');
-                if (span) span.classList.replace('text-cyan-400', 'text-gray-500');
+                if (span && span.classList.contains('text-cyan-400')) {
+                    span.classList.remove('text-cyan-400');
+                    span.classList.add('text-gray-500');
+                }
             });
 
             const selected = document.getElementById(id);
             selected.classList.add('selected');
-            selected.querySelector('span').classList.replace('text-gray-500', 'text-cyan-400');
+            const sp = selected.querySelector('span');
+            if (sp) {
+                sp.classList.remove('text-gray-500');
+                sp.classList.add('text-cyan-400');
+            }
 
             planoFull = name;
             valorFull = price;
         }
 
         function comprarFullAccess() {
-            const msg = encodeURIComponent(`Olá! Quero assinar o acesso total *FULL ACCESS* da WebBot Pro.\n\n📌 *Plano Selecionado:* ${planoFull}\n💰 *Valor:* R$ ${valorFull},00\n\nPor favor, me envie as instruções para pagamento.`);
+            const msg = encodeURIComponent(
+                `Olá! Quero assinar o acesso total *FULL ACCESS* da WebBot Pro.\n\n📌 *Plano Selecionado:* ${planoFull}\n💰 *Valor:* R$ ${valorFull},00\n\nPor favor, me envie as instruções para pagamento.`
+            );
             window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`, '_blank');
         }
     </script>
