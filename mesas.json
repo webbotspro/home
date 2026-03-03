@@ -11,7 +11,8 @@
     "DUZIA_2": "path[data-automation-locator='betPlace.dozen-2nd12']",
     "DUZIA_3": "path[data-automation-locator='betPlace.dozen-3rd12']",
     "BOTAO_HISTORICO_LATERAL": "button.extenededHistory",
-    "BOTAO_ERRO_OK": "button[class*='modal-button_resolve--']"
+    "BOTAO_RESOLVE_ERRO": "button[class*='modal-button_resolve--']",
+    "CONTAINER_ERRO": "[data-automation-locator='popup.action']"
   },
   "MOEDAS": {
     "LOCATOR_2_5": "chipsPanel.chip250",
